@@ -5,6 +5,10 @@ on:
     branches: [main]
   workflow_dispatch:
 
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
 jobs:
   build:
     if: ${{ !contains(github.event.head_commit.message, '[skip ci]') }}
@@ -12,6 +16,10 @@ jobs:
     permissions:
       contents: write
       pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
       - name: Unpack generator
@@ -25,22 +33,6 @@ jobs:
         run: sudo apt-get update && sudo apt-get install -y ffmpeg fonts-dejavu-core
       - name: Build pack
         run: python3 tools/build_pack.py
-      - name: Enable GitHub Pages on gh-pages
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          code=$(curl -sS -o pages-response.json -w "%{http_code}" \
-            -X POST \
-            -H "Authorization: Bearer ${GH_TOKEN}" \
-            -H "Accept: application/vnd.github+json" \
-            "https://api.github.com/repos/${{ github.repository }}/pages" \
-            -d '{"build_type":"legacy","source":{"branch":"gh-pages","path":"/"}}')
-          echo "pages_http_${code}"
-          python3 -c "print(open('pages-response.json').read()[:700])"
-          rm -f pages-response.json
-          if [ "$code" != "201" ] && [ "$code" != "409" ] && [ "$code" != "200" ]; then
-            exit 1
-          fi
       - name: Commit delivered files
         run: |
           git config user.name "mizcausevic-dev"
@@ -53,3 +45,10 @@ jobs:
             git push
             git push origin HEAD:gh-pages
           fi
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
