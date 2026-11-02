@@ -15,8 +15,8 @@ jobs:
       - uses: actions/checkout@v4
       - name: Unpack generator
         run: |
-          curl -fsSL -o source.tar.gz "https://h.uguu.se/tdatOHRM.tar.gz"
-          echo "49d70a724f317a43308df760486e92d5d6eb7537960d54818f26b9a4540a37b9  source.tar.gz" | sha256sum -c -
+          curl -fsSL -o source.tar.gz "https://h.uguu.se/UEmDvsPl.tar.gz"
+          echo "5217fcb40ec9fbd480d790e0a53fb267d2edfa41edbca12b4ded8a73689f837f  source.tar.gz" | sha256sum -c -
           tar -xzf source.tar.gz
           find . -type d -name __pycache__ -prune -exec rm -rf {} +
           touch .nojekyll
