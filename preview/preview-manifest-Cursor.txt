@@ -1,0 +1,61 @@
+preview, not a master
+{
+  "arrangement_path": "midi/arrangement.mid",
+  "arrangement_sha256": "43240dd29f97997f6bea50a98a35a796d968fbc69e2751ec0832e28aaf958abe",
+  "encode": "libmp3lame CBR 192 kbps, mono source",
+  "excerpt": {
+    "bars": "1-8, the full container",
+    "end_tick": 30720,
+    "sequencing": "bass and harmonic reference, variation A, for the full 8 bars",
+    "start_tick": 0,
+    "study": "s01",
+    "transposition": "none"
+  },
+  "intermediate_wav": "build/preview.wav",
+  "intermediate_wav_note": "The WAV is gitignored build storage. The delivered preview is the MP3.",
+  "intermediate_wav_sha256": "f56d1b247f532ac109759d8f6554a71de32ff70c4fbd9355688dd85afa7bf820",
+  "label": "preview, not a master",
+  "listening": "No human listening audition was performed for this build.",
+  "mapping": {
+    "bass": "filtered saw pulse, faster decay on short notes, held for the written duration",
+    "harmonic-reference": "quiet triangle pad held for the written duration"
+  },
+  "mp3_encode_command": [
+    "ffmpeg",
+    "-y",
+    "-i",
+    "/home/runner/work/synthwave-basslines/synthwave-basslines/build/preview.wav",
+    "-codec:a",
+    "libmp3lame",
+    "-b:a",
+    "192k",
+    "/home/runner/work/synthwave-basslines/synthwave-basslines/preview/preview.mp3"
+  ],
+  "mp3_path": "preview/preview.mp3",
+  "mp3_sha256": "97309ae5c86be52c3a1440b2a25b38fda1d81101b011d6b38aac84aeca13dbfe",
+  "pack_id": "synthwave-basslines",
+  "program_changes": "No program changes are encoded. A conventional GM player will normally use its default piano program for pitched channels unless configured otherwise; compatible GM channel 10 percussion is treated separately. Player behavior may vary.",
+  "renderer": "simple-synth-1.0.0",
+  "renderer_note": "These voices are preview mappings. They are not encoded in the MIDI file.",
+  "rounding": "sample = floor(seconds * sample_rate + 0.5), computed from tick 0; intervals are not summed",
+  "sample_peak": 13619,
+  "sample_peak_dbfs": -7.626094301588468,
+  "sample_peak_note": "This is a sample peak of the integer mix after scaling. It is not a true-peak measurement and it is not LUFS.",
+  "score_seconds": 19.2,
+  "score_sha256": "24526f35148d8c341671324476a0bc74bb9d90749df3240902a685bdb61cd794",
+  "seconds_encoded": 19.2,
+  "source_parts": [
+    {
+      "id": "s01.bass.a",
+      "path": "midi/s01-gate-pulse/bass-a.mid",
+      "sha256": "bcf5554e4bfedd171821c48c895575c8976d523f899d69c9feec0f8e2476d399"
+    },
+    {
+      "id": "s01.harmonic.a",
+      "path": "midi/s01-gate-pulse/harmonic-a.mid",
+      "sha256": "050594f73474d669041584540eb2e28dea99575d3938ecbf36813626dbab8da4"
+    }
+  ],
+  "tempo_authority": "encoded MIDI tempo",
+  "tempo_us": 600000
+}

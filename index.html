@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Synthwave Basslines</title>
+  <style>
+    :root {
+      --bg: #070814;
+      --ink: #e7f6ff;
+      --muted: #8ea6bb;
+      --cyan: #2ee6d6;
+      --amber: #ffb454;
+      --panel: #10182c;
+      --line: rgba(46, 230, 214, .28);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(900px 280px at 50% 0, rgba(46, 230, 214, .12), transparent 70%),
+        var(--bg);
+      color: var(--ink);
+      font-family: "Segoe UI", "Avenir Next", "Trebuchet MS", sans-serif;
+      line-height: 1.45;
+    }
+    a { color: var(--cyan); }
+    h1, h2, h3 { font-weight: 560; letter-spacing: -.02em; }
+    h1 { font-size: clamp(2.4rem, 6vw, 4.6rem); line-height: .92; margin: 0 0 12px; }
+    h2 { font-size: 1.45rem; margin: 0 0 8px; }
+    h3 { font-size: 1rem; margin: 0 0 6px; }
+    .wrap { width: min(1120px, calc(100% - 32px)); margin: 0 auto; padding-bottom: 48px; }
+    .kicker { margin: 0; color: var(--amber); letter-spacing: .16em; text-transform: uppercase; font-size: .74rem; }
+    .horizon { height: 2px; margin: 18px 0 26px; background: linear-gradient(90deg, transparent, var(--cyan), var(--amber), transparent); }
+    .intro, .bench { display: grid; grid-template-columns: minmax(0, .92fr) minmax(0, 1.08fr); gap: 28px; align-items: start; }
+    .lede, .meta, .note { color: var(--muted); }
+    .hero img, video, audio { display: block; width: 100%; height: auto; background: #000; }
+    .hero img { border-radius: 16px; }
+    figcaption, .meta, .note, button, .legend { font-family: ui-monospace, Menlo, Consolas, monospace; }
+    figcaption { color: var(--muted); font-size: .78rem; margin-top: 6px; }
+    button {
+      border: 1px solid var(--line); background: transparent; color: var(--ink);
+      border-radius: 8px; padding: 8px 12px; cursor: pointer;
+    }
+    button[aria-pressed="true"] { background: var(--cyan); color: #071018; border-color: var(--cyan); }
+    .index { display: flex; flex-direction: column; gap: 8px; }
+    .switch, .phrases { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0; }
+    .system { display: grid; grid-template-columns: 44px minmax(0, 1fr); gap: 8px; align-items: start; }
+    .axis { margin-top: 26px; height: 392px; position: relative; color: var(--muted); font-size: 10px; }
+    .axis span { position: absolute; right: 0; transform: translateY(-50%); }
+    .scroller, .pad-scroll { overflow-x: auto; max-width: 100%; background: #070b16; border: 1px solid var(--line); border-radius: 14px; }
+    .bars { position: relative; height: 26px; }
+    .change { position: absolute; top: 4px; height: 18px; overflow: hidden; white-space: nowrap; color: var(--amber); font-size: 11px; }
+    .staff { position: relative; height: 392px; background:
+      linear-gradient(to bottom, transparent 11px, rgba(46,230,214,.35) 11px, rgba(46,230,214,.35) 12px, transparent 12px),
+      linear-gradient(to bottom, transparent 149px, rgba(46,230,214,.2) 149px, rgba(46,230,214,.2) 150px, transparent 150px),
+      linear-gradient(to bottom, transparent 287px, rgba(255,180,84,.25) 287px, rgba(255,180,84,.25) 288px, transparent 288px);
+    }
+    .pulse, .pad {
+      position: absolute; height: 8px; border-radius: 4px; background: var(--cyan); min-width: 2px;
+    }
+    .pulse.leap { background: var(--amber); }
+    .leap-line { position: absolute; width: 2px; background: var(--amber); }
+    .rests { position: relative; height: 28px; }
+    .rest {
+      position: absolute; top: 4px; height: 18px; overflow: hidden; white-space: nowrap;
+      border: 1px dashed rgba(46, 230, 214, .7); color: var(--cyan); font-size: 10px;
+      line-height: 16px; padding: 0 4px; border-radius: 4px;
+    }
+    .pad { height: 6px; background: #8eb4ff; }
+    .pad-staff { position: relative; height: 180px; }
+    .legend { display: flex; flex-wrap: wrap; gap: 14px; color: var(--muted); font-size: .75rem; }
+    .swatch { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 4px; }
+    .chapter { margin-top: 36px; }
+    .cards { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+    .card { border: 1px solid var(--line); border-radius: 12px; padding: 10px 12px; background: rgba(16, 24, 44, .7); }
+    .card ul { margin: 0 0 8px; padding-left: 16px; }
+    .flow { display: flex; flex-wrap: wrap; gap: 8px; padding: 0; margin: 0; list-style: none; }
+    .flow li { border: 1px solid var(--line); border-radius: 999px; padding: 4px 10px; font-size: .78rem; }
+    .table-scroll { overflow-x: auto; max-width: 100%; }
+    table { width: 100%; border-collapse: collapse; font-size: .8rem; }
+    th, td { text-align: left; padding: 7px 6px; border-bottom: 1px solid var(--line); vertical-align: top; }
+    video { border-radius: 12px; margin-top: 8px; }
+    @media (max-width: 800px) {
+      .intro, .bench, .cards { grid-template-columns: 1fr; }
+      .index { flex-direction: row; overflow-x: auto; }
+      .index button { flex: 0 0 auto; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <p class="kicker">Synthwave Basslines</p>
+      <div class="horizon"></div>
+      <div class="intro">
+        <div>
+          <h1 id="title">Gate Pulse</h1>
+          <p class="lede" id="identity"></p>
+          <p class="meta" id="facts"></p>
+          <p id="rhythm"></p>
+          <p id="harmony"></p>
+          <p class="note" id="limits"></p>
+          <p class="note" id="departures"></p>
+          <p><a href="media.html">Stills</a> · <a href="midi/arrangement.mid">Arrangement</a> · <a href="#files">Files</a></p>
+        </div>
+        <figure class="hero">
+          <img src="art/hero.jpg" width="1280" height="720" alt="Illustration of a neon night road with cyan bass pulses and amber octave peaks. Not a photograph of a studio or of performers.">
+          <figcaption>Illustration of a neon night road. Not a photograph of a recording session or of performers.</figcaption>
+        </figure>
+      </div>
+    </header>
+    <section class="chapter" id="roll">
+      <div class="bench">
+        <div>
+          <p class="kicker">Eight studies</p>
+          <div class="index" id="index"></div>
+        </div>
+        <div>
+          <div class="switch">
+            <button type="button" id="var-a" aria-pressed="true">Variation A</button>
+            <button type="button" id="var-b" aria-pressed="false">Variation B</button>
+            <button type="button" id="play">Play bass</button>
+            <button type="button" id="pad-toggle" aria-pressed="false">Harmonic reference</button>
+          </div>
+          <p class="note" id="keys">Space plays the bass. J and K change study.</p>
+          <div class="phrases" id="phrases"></div>
+          <div class="system">
+            <div class="axis" id="axis"></div>
+            <div class="scroller" id="scroller">
+              <div class="bars" id="bars"></div>
+              <div class="staff" id="bass-staff"></div>
+              <div class="rests" id="rest-row"></div>
+            </div>
+          </div>
+          <p class="legend">
+            <span><i class="swatch" style="background:#2ee6d6"></i>bass pulse</span>
+            <span><i class="swatch" style="background:#ffb454"></i>octave leap</span>
+            <span><i class="swatch" style="background:transparent;border:1px dashed #2ee6d6"></i>rest of an eighth or longer</span>
+          </p>
+          <p class="note" id="status">Reading the MIDI.</p>
+          <div id="pad-panel" hidden>
+            <h2>Harmonic reference</h2>
+            <p class="note">Separate MIDI file. These notes are not drawn on the bass staff and are not merged into the bass part.</p>
+            <div class="pad-scroll"><div class="pad-staff" id="pad-staff"></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="chapter">
+      <h2>Studies</h2>
+      <p>Bass is monophonic and uses MIDI notes 28 to 60 only. C4 is 60. The harmonic reference is not core. It uses MIDI 60 to 84, at most three notes at once, in its own files.</p>
+      <ul><li><strong>s01 Gate Pulse</strong> 100 BPM, 8 bars, 19.20 seconds, A natural minor, tonic A. Six gated eighths and a rest on beat 4. The last bar keeps three notes and a longer rest. Use bass A with harmonic A, and bass B with harmonic B. The beat-4 silence is the gate. Do not fill it.</li><li><strong>s02 Offbeat Neon</strong> 110 BPM, 16 bars, 34.91 seconds, D natural minor, tonic D. Four offbeat attacks. Downbeats are rests until the last bar lengthens two of them. The offbeat grid is the hook. Variation B is not a shifted copy of the same durations.</li><li><strong>s03 Long Fifth</strong> 90 BPM, 8 bars, 21.33 seconds, F natural minor, tonic F. Even bars hold one note and rest at the end. Odd bars enter a quarter late, except the final hold. The long notes are written durations, not a pedal controller. Nothing in the file sustains past its note-off.</li><li><strong>s04 Dotted Drive</strong> 118 BPM, 16 bars, 32.54 seconds, E natural minor, tonic E. Dotted eighth plus sixteenth, three times, then a rest on beat 4. The last bar is two longer notes. The dot is the written duration. No swing offset is stored.</li><li><strong>s05 Rest Leap</strong> 85 BPM, 8 bars, 22.59 seconds, C natural minor, tonic C. A note on beat 1, a long rest, a short leap, and another rest. The last two bars change the spacing. The empty beats are the line. Do not quantize them into a busier pulse.</li><li><strong>s06 Sixteenth Burst</strong> 120 BPM, 16 bars, 32.00 seconds, G natural minor, tonic G. Two bursts of four sixteenths with rests between and after them. The last four bars keep only the first burst. The gaps inside a burst are shorter than an eighth and are not the structural rests. The structural rests are the holes between bursts.</li><li><strong>s07 Syncopated Arc</strong> 96 BPM, 8 bars, 20.00 seconds, Bb natural minor, tonic Bb. A 16th pickup into beat 2, a held note, a rest, and a short answer on beat 4. The ending changes the grid. The anticipation is an earlier start, not a negative offset. Nothing begins before tick 0.</li><li><strong>s08 Pedal Climb</strong> 108 BPM, 16 bars, 35.56 seconds, B natural minor, tonic B. A low pedal with a rest before the last beat, then a three-note climb, then octave leaps into a held final bar. The pedal is repeated notes with a rest, not a tied controller. Pair variation B's gallop only with harmonic B.</li></ul>
+    </section>
+    <section class="chapter">
+      <h2>File contract</h2>
+      <ol class="flow">
+        <li>Canonical score</li>
+        <li>MIDI</li>
+        <li>Reopened validation</li>
+        <li>MP3</li>
+        <li>Film</li>
+        <li>Stills</li>
+        <li>Drafts</li>
+        <li>This page</li>
+      </ol>
+    </section>
+    <section class="chapter" id="map">
+      <h2>Set map</h2>
+      <div class="cards"><article class="card"><h3>s01 Gate Pulse</h3><p>Core bass</p><ul><li><a href="midi/s01-gate-pulse/bass-a.mid">s01.bass.a</a></li><li><a href="midi/s01-gate-pulse/bass-b.mid">s01.bass.b</a></li></ul><p>Harmonic reference, not core</p><ul><li><a href="midi/s01-gate-pulse/harmonic-a.mid">s01.harmonic.a</a></li><li><a href="midi/s01-gate-pulse/harmonic-b.mid">s01.harmonic.b</a></li></ul></article><article class="card"><h3>s02 Offbeat Neon</h3><p>Core bass</p><ul><li><a href="midi/s02-offbeat-neon/bass-a.mid">s02.bass.a</a></li><li><a href="midi/s02-offbeat-neon/bass-b.mid">s02.bass.b</a></li></ul><p>Harmonic reference, not core</p><ul><li><a href="midi/s02-offbeat-neon/harmonic-a.mid">s02.harmonic.a</a></li><li><a href="midi/s02-offbeat-neon/harmonic-b.mid">s02.harmonic.b</a></li></ul></article><article class="card"><h3>s03 Long Fifth</h3><p>Core bass</p><ul><li><a href="midi/s03-long-fifth/bass-a.mid">s03.bass.a</a></li><li><a href="midi/s03-long-fifth/bass-b.mid">s03.bass.b</a></li></ul><p>Harmonic reference, not core</p><ul><li><a href="midi/s03-long-fifth/harmonic-a.mid">s03.harmonic.a</a></li><li><a href="midi/s03-long-fifth/harmonic-b.mid">s03.harmonic.b</a></li></ul></article><article class="card"><h3>s04 Dotted Drive</h3><p>Core bass</p><ul><li><a href="midi/s04-dotted-drive/bass-a.mid">s04.bass.a</a></li><li><a href="midi/s04-dotted-drive/bass-b.mid">s04.bass.b</a></li></ul><p>Harmonic reference, not core</p><ul><li><a href="midi/s04-dotted-drive/harmonic-a.mid">s04.harmonic.a</a></li><li><a href="midi/s04-dotted-drive/harmonic-b.mid">s04.harmonic.b</a></li></ul></article><article class="card"><h3>s05 Rest Leap</h3><p>Core bass</p><ul><li><a href="midi/s05-rest-leap/bass-a.mid">s05.bass.a</a></li><li><a href="midi/s05-rest-leap/bass-b.mid">s05.bass.b</a></li></ul><p>Harmonic reference, not core</p><ul><li><a href="midi/s05-rest-leap/harmonic-a.mid">s05.harmonic.a</a></li><li><a href="midi/s05-rest-leap/harmonic-b.mid">s05.harmonic.b</a></li></ul></article><article class="card"><h3>s06 Sixteenth Burst</h3><p>Core bass</p><ul><li><a href="midi/s06-sixteenth-burst/bass-a.mid">s06.bass.a</a></li><li><a href="midi/s06-sixteenth-burst/bass-b.mid">s06.bass.b</a></li></ul><p>Harmonic reference, not core</p><ul><li><a href="midi/s06-sixteenth-burst/harmonic-a.mid">s06.harmonic.a</a></li><li><a href="midi/s06-sixteenth-burst/harmonic-b.mid">s06.harmonic.b</a></li></ul></article><article class="card"><h3>s07 Syncopated Arc</h3><p>Core bass</p><ul><li><a href="midi/s07-syncopated-arc/bass-a.mid">s07.bass.a</a></li><li><a href="midi/s07-syncopated-arc/bass-b.mid">s07.bass.b</a></li></ul><p>Harmonic reference, not core</p><ul><li><a href="midi/s07-syncopated-arc/harmonic-a.mid">s07.harmonic.a</a></li><li><a href="midi/s07-syncopated-arc/harmonic-b.mid">s07.harmonic.b</a></li></ul></article><article class="card"><h3>s08 Pedal Climb</h3><p>Core bass</p><ul><li><a href="midi/s08-pedal-climb/bass-a.mid">s08.bass.a</a></li><li><a href="midi/s08-pedal-climb/bass-b.mid">s08.bass.b</a></li></ul><p>Harmonic reference, not core</p><ul><li><a href="midi/s08-pedal-climb/harmonic-a.mid">s08.harmonic.a</a></li><li><a href="midi/s08-pedal-climb/harmonic-b.mid">s08.harmonic.b</a></li></ul></article></div>
+    </section>
+    <section class="chapter" id="files">
+      <h2>Files</h2>
+      <p class="meta">Validation PASS. Core 16. Harmonic references 16. <a href="midi/validation-Cursor.json">validation report</a> · <a href="catalog/catalog-Cursor.json">catalog</a> · <a href="score/canonical-score-Cursor.json">canonical score</a></p>
+      <p>Use either the combined arrangement or the separate parts. Do not stack the part files on top of the combined file.</p>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>Part</th><th>Role</th><th>Var</th><th>Count</th><th>BPM</th><th>Bars</th><th>Notes</th></tr></thead>
+          <tbody><tr><td><a href="midi/s01-gate-pulse/bass-a.mid">s01.bass.a</a></td><td>bass</td><td>a</td><td>core</td><td>100</td><td>8</td><td>45</td></tr><tr><td><a href="midi/s01-gate-pulse/bass-b.mid">s01.bass.b</a></td><td>bass</td><td>b</td><td>core</td><td>100</td><td>8</td><td>32</td></tr><tr><td><a href="midi/s01-gate-pulse/harmonic-a.mid">s01.harmonic.a</a></td><td>harmonic-reference</td><td>a</td><td>harmonic reference</td><td>100</td><td>8</td><td>6</td></tr><tr><td><a href="midi/s01-gate-pulse/harmonic-b.mid">s01.harmonic.b</a></td><td>harmonic-reference</td><td>b</td><td>harmonic reference</td><td>100</td><td>8</td><td>4</td></tr><tr><td><a href="midi/s02-offbeat-neon/bass-a.mid">s02.bass.a</a></td><td>bass</td><td>a</td><td>core</td><td>110</td><td>16</td><td>62</td></tr><tr><td><a href="midi/s02-offbeat-neon/bass-b.mid">s02.bass.b</a></td><td>bass</td><td>b</td><td>core</td><td>110</td><td>16</td><td>48</td></tr><tr><td><a href="midi/s02-offbeat-neon/harmonic-a.mid">s02.harmonic.a</a></td><td>harmonic-reference</td><td>a</td><td>harmonic reference</td><td>110</td><td>16</td><td>6</td></tr><tr><td><a href="midi/s02-offbeat-neon/harmonic-b.mid">s02.harmonic.b</a></td><td>harmonic-reference</td><td>b</td><td>harmonic reference</td><td>110</td><td>16</td><td>4</td></tr><tr><td><a href="midi/s03-long-fifth/bass-a.mid">s03.bass.a</a></td><td>bass</td><td>a</td><td>core</td><td>90</td><td>8</td><td>8</td></tr><tr><td><a href="midi/s03-long-fifth/bass-b.mid">s03.bass.b</a></td><td>bass</td><td>b</td><td>core</td><td>90</td><td>8</td><td>32</td></tr><tr><td><a href="midi/s03-long-fifth/harmonic-a.mid">s03.harmonic.a</a></td><td>harmonic-reference</td><td>a</td><td>harmonic reference</td><td>90</td><td>8</td><td>6</td></tr><tr><td><a href="midi/s03-long-fifth/harmonic-b.mid">s03.harmonic.b</a></td><td>harmonic-reference</td><td>b</td><td>harmonic reference</td><td>90</td><td>8</td><td>4</td></tr><tr><td><a href="midi/s04-dotted-drive/bass-a.mid">s04.bass.a</a></td><td>bass</td><td>a</td><td>core</td><td>118</td><td>16</td><td>92</td></tr><tr><td><a href="midi/s04-dotted-drive/bass-b.mid">s04.bass.b</a></td><td>bass</td><td>b</td><td>core</td><td>118</td><td>16</td><td>48</td></tr><tr><td><a href="midi/s04-dotted-drive/harmonic-a.mid">s04.harmonic.a</a></td><td>harmonic-reference</td><td>a</td><td>harmonic reference</td><td>118</td><td>16</td><td>6</td></tr><tr><td><a href="midi/s04-dotted-drive/harmonic-b.mid">s04.harmonic.b</a></td><td>harmonic-reference</td><td>b</td><td>harmonic reference</td><td>118</td><td>16</td><td>4</td></tr><tr><td><a href="midi/s05-rest-leap/bass-a.mid">s05.bass.a</a></td><td>bass</td><td>a</td><td>core</td><td>85</td><td>8</td><td>14</td></tr><tr><td><a href="midi/s05-rest-leap/bass-b.mid">s05.bass.b</a></td><td>bass</td><td>b</td><td>core</td><td>85</td><td>8</td><td>16</td></tr><tr><td><a href="midi/s05-rest-leap/harmonic-a.mid">s05.harmonic.a</a></td><td>harmonic-reference</td><td>a</td><td>harmonic reference</td><td>85</td><td>8</td><td>6</td></tr><tr><td><a href="midi/s05-rest-leap/harmonic-b.mid">s05.harmonic.b</a></td><td>harmonic-reference</td><td>b</td><td>harmonic reference</td><td>85</td><td>8</td><td>4</td></tr><tr><td><a href="midi/s06-sixteenth-burst/bass-a.mid">s06.bass.a</a></td><td>bass</td><td>a</td><td>core</td><td>120</td><td>16</td><td>112</td></tr><tr><td><a href="midi/s06-sixteenth-burst/bass-b.mid">s06.bass.b</a></td><td>bass</td><td>b</td><td>core</td><td>120</td><td>16</td><td>48</td></tr><tr><td><a href="midi/s06-sixteenth-burst/harmonic-a.mid">s06.harmonic.a</a></td><td>harmonic-reference</td><td>a</td><td>harmonic reference</td><td>120</td><td>16</td><td>6</td></tr><tr><td><a href="midi/s06-sixteenth-burst/harmonic-b.mid">s06.harmonic.b</a></td><td>harmonic-reference</td><td>b</td><td>harmonic reference</td><td>120</td><td>16</td><td>4</td></tr><tr><td><a href="midi/s07-syncopated-arc/bass-a.mid">s07.bass.a</a></td><td>bass</td><td>a</td><td>core</td><td>96</td><td>8</td><td>21</td></tr><tr><td><a href="midi/s07-syncopated-arc/bass-b.mid">s07.bass.b</a></td><td>bass</td><td>b</td><td>core</td><td>96</td><td>8</td><td>32</td></tr><tr><td><a href="midi/s07-syncopated-arc/harmonic-a.mid">s07.harmonic.a</a></td><td>harmonic-reference</td><td>a</td><td>harmonic reference</td><td>96</td><td>8</td><td>6</td></tr><tr><td><a href="midi/s07-syncopated-arc/harmonic-b.mid">s07.harmonic.b</a></td><td>harmonic-reference</td><td>b</td><td>harmonic reference</td><td>96</td><td>8</td><td>4</td></tr><tr><td><a href="midi/s08-pedal-climb/bass-a.mid">s08.bass.a</a></td><td>bass</td><td>a</td><td>core</td><td>108</td><td>16</td><td>42</td></tr><tr><td><a href="midi/s08-pedal-climb/bass-b.mid">s08.bass.b</a></td><td>bass</td><td>b</td><td>core</td><td>108</td><td>16</td><td>96</td></tr><tr><td><a href="midi/s08-pedal-climb/harmonic-a.mid">s08.harmonic.a</a></td><td>harmonic-reference</td><td>a</td><td>harmonic reference</td><td>108</td><td>16</td><td>6</td></tr><tr><td><a href="midi/s08-pedal-climb/harmonic-b.mid">s08.harmonic.b</a></td><td>harmonic-reference</td><td>b</td><td>harmonic reference</td><td>108</td><td>16</td><td>4</td></tr></tbody>
+        </table>
+      </div>
+    </section>
+    <section class="chapter" id="reading">
+      <p class="kicker">Recorded reading</p>
+      <h2>Study 01, variation A, all 8 bars</h2>
+      <p>This MP3 is 19.20 seconds. preview, not a master. It includes bass A and harmonic reference A from study 01. The film is 19.20 seconds and shows preview, not master.</p>
+      <audio controls preload="metadata" src="preview/preview.mp3"></audio>
+      <p><a href="preview/preview.mp3">preview/preview.mp3</a> · <a href="preview/preview-manifest-Cursor.txt">preview manifest</a></p>
+      <video controls preload="metadata" poster="film/poster.jpg" width="1280" height="720">
+        <source src="film/preview.mp4" type="video/mp4">
+        <track kind="captions" src="film/preview.vtt" srclang="en" label="English" default>
+      </video>
+      <p><a href="film/preview.mp4">film/preview.mp4</a> · <a href="film/preview.vtt">captions</a></p>
+    </section>
+    <section class="chapter">
+      <h2>Validator</h2>
+      <ul><li>file exists and parses</li><li>PPQ 960</li><li>encoded tempo and 4/4 meter</li><li>one end-of-track at the declared container</li><li>explicit note pairing</li><li>boundaries, velocity, bass range 28-60 monophonic, harmonic range 60-84 polyphony cap 3</li><li>note-offs precede note-ons that share a tick</li><li>no program changes or other channel messages</li><li>reopened notes match the canonical score</li><li>arrangement musical tracks match the individual files and carry no tempo</li></ul>
+      <p>No program changes are encoded. A conventional GM player will normally use its default piano program for pitched channels unless configured otherwise; compatible GM channel 10 percussion is treated separately. Player behavior may vary.</p>
+      <p>No human listening audition was performed for this build.</p>
+    </section>
+    <section class="chapter">
+      <h2>DRAFT article</h2>
+      <p>Synthwave Basslines is a note-only MIDI study pack</p>
+      <p>Tags: midi, synthwave, bass, music-production, composition</p>
+      <p><a href="articles/medium-draft-Cursor.md">Article draft</a> · <a href="articles/medium-paste-Cursor.txt">plain text</a></p>
+    </section>
+    <p>The GitHub repository is https://github.com/mizcausevic-dev/synthwave-basslines and it is public. The catalog page is https://mizcausevic-dev.github.io/synthwave-basslines/ .</p>
+  </div>
+  <script id="pack" type="application/json">{"studies": [{"id": "s01", "title": "Gate Pulse", "bpm": 100, "bars": 8, "collection": "A natural minor", "tonic": "A", "identity": "Six short gates on the eighth grid and a rest on beat 4. Bars 3, 6, and 8 leap an octave. Variation B starts a 16th later, holds longer notes, and begins on C instead of A.", "limitations": "Use bass A with harmonic A, and bass B with harmonic B. The beat-4 silence is the gate. Do not fill it.", "rhythm": "Six gated eighths and a rest on beat 4. The last bar keeps three notes and a longer rest.", "accent": "The last two gates of a bar are louder. The octave leap is the peak.", "harmonic_rhythm": "Four bars of Am, then four bars of Em.", "departures": [], "phrases": [{"name": "Pulse", "start_bar": 0, "bars": 2}, {"name": "Leap", "start_bar": 2, "bars": 2}, {"name": "Fifth", "start_bar": 4, "bars": 2}, {"name": "Turn", "start_bar": 6, "bars": 2}], "tempo_us": 600000, "changes": ["Am", "Am leap", "Em", "C turn"], "change_bars": [2, 2, 2, 2], "spell": ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"], "nominal_seconds": 19.2}, {"id": "s02", "title": "Offbeat Neon", "bpm": 110, "bars": 16, "collection": "D natural minor", "tonic": "D", "identity": "Attacks sit on the and of each beat, so every downbeat is a rest. D2 answers D3 in the second phrase. Variation B plays beats 1, 2, and 4 and starts on A.", "limitations": "The offbeat grid is the hook. Variation B is not a shifted copy of the same durations.", "rhythm": "Four offbeat attacks. Downbeats are rests until the last bar lengthens two of them.", "accent": "The even offbeats are louder than the odd ones. The last bar is the peak.", "harmonic_rhythm": "Eight bars of Dm, then eight bars of Bb.", "departures": [], "phrases": [{"name": "Offbeat", "start_bar": 0, "bars": 4}, {"name": "Octave", "start_bar": 4, "bars": 4}, {"name": "Answer", "start_bar": 8, "bars": 4}, {"name": "Arrive", "start_bar": 12, "bars": 4}], "tempo_us": 545455, "changes": ["Dm", "D octave", "A F", "Arrive"], "change_bars": [4, 4, 4, 4], "spell": ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "Bb", "B"], "nominal_seconds": 34.90909090909091}, {"id": "s03", "title": "Long Fifth", "bpm": 90, "bars": 8, "collection": "F natural minor", "tonic": "F", "identity": "Long notes with a rest at the end of even bars. The leap from F1 to C3 is wider than an octave. Variation B replaces each hold with four attacks.", "limitations": "The long notes are written durations, not a pedal controller. Nothing in the file sustains past its note-off.", "rhythm": "Even bars hold one note and rest at the end. Odd bars enter a quarter late, except the final hold.", "accent": "The late fifth is louder than the low F. The final hold is the peak.", "harmonic_rhythm": "Four bars of Fm, then four bars of C.", "departures": [], "phrases": [{"name": "Low", "start_bar": 0, "bars": 2}, {"name": "Fifth", "start_bar": 2, "bars": 2}, {"name": "Lift", "start_bar": 4, "bars": 2}, {"name": "Cadence", "start_bar": 6, "bars": 2}], "tempo_us": 666667, "changes": ["F low", "Fifth", "F lift", "Cadence"], "change_bars": [2, 2, 2, 2], "spell": ["C", "Db", "D", "Eb", "E", "F", "F#", "G", "Ab", "A", "Bb", "B"], "nominal_seconds": 21.333333333333332}, {"id": "s04", "title": "Dotted Drive", "bpm": 118, "bars": 16, "collection": "E natural minor", "tonic": "E", "identity": "A dotted eighth and a sixteenth, three pairs, then silence on beat 4. The sixteenths leap to E3, then down to B1. Variation B leaves that grid for three notes starting after a 16th.", "limitations": "The dot is the written duration. No swing offset is stored.", "rhythm": "Dotted eighth plus sixteenth, three times, then a rest on beat 4. The last bar is two longer notes.", "accent": "Each sixteenth is louder than the dotted note before it.", "harmonic_rhythm": "Eight bars of Em, then eight bars of D.", "departures": [], "phrases": [{"name": "Motor", "start_bar": 0, "bars": 4}, {"name": "Leap", "start_bar": 4, "bars": 4}, {"name": "Low B", "start_bar": 8, "bars": 4}, {"name": "Landing", "start_bar": 12, "bars": 4}], "tempo_us": 508475, "changes": ["Em motor", "Octave 16ths", "Low B", "Landing"], "change_bars": [4, 4, 4, 4], "spell": ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"], "nominal_seconds": 32.54237288135593}, {"id": "s05", "title": "Rest Leap", "bpm": 85, "bars": 8, "collection": "C natural minor", "tonic": "C", "identity": "Beat 1, a long rest, a short octave leap, and another rest. Variation B is silent on beat 1 and answers in the middle of the bar, often moving down.", "limitations": "The empty beats are the line. Do not quantize them into a busier pulse.", "rhythm": "A note on beat 1, a long rest, a short leap, and another rest. The last two bars change the spacing.", "accent": "The short leap is louder than the downbeat.", "harmonic_rhythm": "Four bars of Cm, then four bars of Ab.", "departures": [], "phrases": [{"name": "Rest", "start_bar": 0, "bars": 2}, {"name": "Leap", "start_bar": 2, "bars": 2}, {"name": "Drop", "start_bar": 4, "bars": 2}, {"name": "Arrive", "start_bar": 6, "bars": 2}], "tempo_us": 705882, "changes": ["C leap", "G leap", "Ab F", "Arrive"], "change_bars": [2, 2, 2, 2], "spell": ["C", "C#", "D", "Eb", "E", "F", "F#", "G", "Ab", "A", "Bb", "B"], "nominal_seconds": 22.58823529411765}, {"id": "s06", "title": "Sixteenth Burst", "bpm": 120, "bars": 16, "collection": "G natural minor", "tonic": "G", "identity": "Four sixteenths, a rest, four sixteenths, a rest. The second burst leaps to G3. This is not one eighth-note cell transposed through eight studies. Variation B walks in three longer notes.", "limitations": "The gaps inside a burst are shorter than an eighth and are not the structural rests. The structural rests are the holes between bursts.", "rhythm": "Two bursts of four sixteenths with rests between and after them. The last four bars keep only the first burst.", "accent": "The second burst is louder than the first.", "harmonic_rhythm": "Eight bars of Gm, then eight bars of Eb.", "departures": [], "phrases": [{"name": "Burst", "start_bar": 0, "bars": 4}, {"name": "High burst", "start_bar": 4, "bars": 4}, {"name": "Color", "start_bar": 8, "bars": 4}, {"name": "Thin", "start_bar": 12, "bars": 4}], "tempo_us": 500000, "changes": ["Gm burst", "Octave burst", "Bb D", "Thin"], "change_bars": [4, 4, 4, 4], "spell": ["C", "C#", "D", "Eb", "E", "F", "F#", "G", "G#", "A", "Bb", "B"], "nominal_seconds": 32.0}, {"id": "s07", "title": "Syncopated Arc", "bpm": 96, "bars": 8, "collection": "Bb natural minor", "tonic": "Bb", "identity": "The line anticipates beat 2, holds, rests, and answers an octave up on beat 4. Variation B drops the pickup and plays four even attacks from the downbeat.", "limitations": "The anticipation is an earlier start, not a negative offset. Nothing begins before tick 0.", "rhythm": "A 16th pickup into beat 2, a held note, a rest, and a short answer on beat 4. The ending changes the grid.", "accent": "The beat-4 answer is the loud note of the bar.", "harmonic_rhythm": "Four bars of Bbm, then four bars of Gb.", "departures": [], "phrases": [{"name": "Push", "start_bar": 0, "bars": 2}, {"name": "Fifth", "start_bar": 2, "bars": 2}, {"name": "Descent", "start_bar": 4, "bars": 2}, {"name": "Hold", "start_bar": 6, "bars": 2}], "tempo_us": 625000, "changes": ["Bb push", "F push", "Db", "Hold"], "change_bars": [2, 2, 2, 2], "spell": ["C", "Db", "D", "Eb", "E", "F", "Gb", "G", "Ab", "A", "Bb", "B"], "nominal_seconds": 20.0}, {"id": "s08", "title": "Pedal Climb", "bpm": 108, "bars": 16, "collection": "B natural minor", "tonic": "B", "identity": "Four bars of B1 with a rest before beat 4, eight bars climbing the scale, then octave leaps and a held B2. Variation B is a six-note gallop that starts on F sharp and moves downward.", "limitations": "The pedal is repeated notes with a rest, not a tied controller. Pair variation B's gallop only with harmonic B.", "rhythm": "A low pedal with a rest before the last beat, then a three-note climb, then octave leaps into a held final bar.", "accent": "The note before the rest is louder than the pickup of the pedal. The octave peak is the loudest.", "harmonic_rhythm": "Eight bars of Bm, then eight bars of G.", "departures": [], "phrases": [{"name": "Pedal", "start_bar": 0, "bars": 4}, {"name": "Climb", "start_bar": 4, "bars": 4}, {"name": "Return", "start_bar": 8, "bars": 4}, {"name": "Leap", "start_bar": 12, "bars": 4}], "tempo_us": 555556, "changes": ["Pedal", "Climb", "Climb down", "Leap"], "change_bars": [4, 4, 4, 4], "spell": ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"], "nominal_seconds": 35.55555555555556}], "parts": [{"id": "s01.bass.a", "study_id": "s01", "role": "bass", "variation": "a", "path": "midi/s01-gate-pulse/bass-a.mid"}, {"id": "s01.bass.b", "study_id": "s01", "role": "bass", "variation": "b", "path": "midi/s01-gate-pulse/bass-b.mid"}, {"id": "s01.harmonic.a", "study_id": "s01", "role": "harmonic-reference", "variation": "a", "path": "midi/s01-gate-pulse/harmonic-a.mid"}, {"id": "s01.harmonic.b", "study_id": "s01", "role": "harmonic-reference", "variation": "b", "path": "midi/s01-gate-pulse/harmonic-b.mid"}, {"id": "s02.bass.a", "study_id": "s02", "role": "bass", "variation": "a", "path": "midi/s02-offbeat-neon/bass-a.mid"}, {"id": "s02.bass.b", "study_id": "s02", "role": "bass", "variation": "b", "path": "midi/s02-offbeat-neon/bass-b.mid"}, {"id": "s02.harmonic.a", "study_id": "s02", "role": "harmonic-reference", "variation": "a", "path": "midi/s02-offbeat-neon/harmonic-a.mid"}, {"id": "s02.harmonic.b", "study_id": "s02", "role": "harmonic-reference", "variation": "b", "path": "midi/s02-offbeat-neon/harmonic-b.mid"}, {"id": "s03.bass.a", "study_id": "s03", "role": "bass", "variation": "a", "path": "midi/s03-long-fifth/bass-a.mid"}, {"id": "s03.bass.b", "study_id": "s03", "role": "bass", "variation": "b", "path": "midi/s03-long-fifth/bass-b.mid"}, {"id": "s03.harmonic.a", "study_id": "s03", "role": "harmonic-reference", "variation": "a", "path": "midi/s03-long-fifth/harmonic-a.mid"}, {"id": "s03.harmonic.b", "study_id": "s03", "role": "harmonic-reference", "variation": "b", "path": "midi/s03-long-fifth/harmonic-b.mid"}, {"id": "s04.bass.a", "study_id": "s04", "role": "bass", "variation": "a", "path": "midi/s04-dotted-drive/bass-a.mid"}, {"id": "s04.bass.b", "study_id": "s04", "role": "bass", "variation": "b", "path": "midi/s04-dotted-drive/bass-b.mid"}, {"id": "s04.harmonic.a", "study_id": "s04", "role": "harmonic-reference", "variation": "a", "path": "midi/s04-dotted-drive/harmonic-a.mid"}, {"id": "s04.harmonic.b", "study_id": "s04", "role": "harmonic-reference", "variation": "b", "path": "midi/s04-dotted-drive/harmonic-b.mid"}, {"id": "s05.bass.a", "study_id": "s05", "role": "bass", "variation": "a", "path": "midi/s05-rest-leap/bass-a.mid"}, {"id": "s05.bass.b", "study_id": "s05", "role": "bass", "variation": "b", "path": "midi/s05-rest-leap/bass-b.mid"}, {"id": "s05.harmonic.a", "study_id": "s05", "role": "harmonic-reference", "variation": "a", "path": "midi/s05-rest-leap/harmonic-a.mid"}, {"id": "s05.harmonic.b", "study_id": "s05", "role": "harmonic-reference", "variation": "b", "path": "midi/s05-rest-leap/harmonic-b.mid"}, {"id": "s06.bass.a", "study_id": "s06", "role": "bass", "variation": "a", "path": "midi/s06-sixteenth-burst/bass-a.mid"}, {"id": "s06.bass.b", "study_id": "s06", "role": "bass", "variation": "b", "path": "midi/s06-sixteenth-burst/bass-b.mid"}, {"id": "s06.harmonic.a", "study_id": "s06", "role": "harmonic-reference", "variation": "a", "path": "midi/s06-sixteenth-burst/harmonic-a.mid"}, {"id": "s06.harmonic.b", "study_id": "s06", "role": "harmonic-reference", "variation": "b", "path": "midi/s06-sixteenth-burst/harmonic-b.mid"}, {"id": "s07.bass.a", "study_id": "s07", "role": "bass", "variation": "a", "path": "midi/s07-syncopated-arc/bass-a.mid"}, {"id": "s07.bass.b", "study_id": "s07", "role": "bass", "variation": "b", "path": "midi/s07-syncopated-arc/bass-b.mid"}, {"id": "s07.harmonic.a", "study_id": "s07", "role": "harmonic-reference", "variation": "a", "path": "midi/s07-syncopated-arc/harmonic-a.mid"}, {"id": "s07.harmonic.b", "study_id": "s07", "role": "harmonic-reference", "variation": "b", "path": "midi/s07-syncopated-arc/harmonic-b.mid"}, {"id": "s08.bass.a", "study_id": "s08", "role": "bass", "variation": "a", "path": "midi/s08-pedal-climb/bass-a.mid"}, {"id": "s08.bass.b", "study_id": "s08", "role": "bass", "variation": "b", "path": "midi/s08-pedal-climb/bass-b.mid"}, {"id": "s08.harmonic.a", "study_id": "s08", "role": "harmonic-reference", "variation": "a", "path": "midi/s08-pedal-climb/harmonic-a.mid"}, {"id": "s08.harmonic.b", "study_id": "s08", "role": "harmonic-reference", "variation": "b", "path": "midi/s08-pedal-climb/harmonic-b.mid"}]}</script>
+  <script>
+    const pack = JSON.parse(document.getElementById("pack").textContent);
+    const index = document.getElementById("index");
+    const phrases = document.getElementById("phrases");
+    const scroller = document.getElementById("scroller");
+    const bars = document.getElementById("bars");
+    const staff = document.getElementById("bass-staff");
+    const restRow = document.getElementById("rest-row");
+    const axis = document.getElementById("axis");
+    const padPanel = document.getElementById("pad-panel");
+    const padStaff = document.getElementById("pad-staff");
+    const status = document.getElementById("status");
+    const STAFF_H = 392;
+    const PAD_H = 180;
+    let studyId = "s01";
+    let variation = "a";
+    let bassNotes = [];
+    let padNotes = [];
+    let showPad = false;
+    let audio = null;
+    let playing = false;
+    let followId = 0;
+    let rollWidth = 1200;
+
+    function study() {
+      return pack.studies.find((item) => item.id === studyId);
+    }
+    function pitchName(pitch) {
+      return study().spell[pitch % 12] + (Math.floor(pitch / 12) - 1);
+    }
+    function yBass(pitch) {
+      return 12 + (60 - pitch) * ((STAFF_H - 24) / 32);
+    }
+    function yPad(pitch) {
+      return 10 + (84 - pitch) * ((PAD_H - 20) / 24);
+    }
+    function readVlq(view, offset) {
+      let value = 0;
+      let byte = 0;
+      do {
+        byte = view.getUint8(offset);
+        offset += 1;
+        value = (value << 7) | (byte & 0x7f);
+      } while (byte & 0x80);
+      return [value, offset];
+    }
+    function parseMidi(buffer) {
+      const view = new DataView(buffer);
+      if (String.fromCharCode(view.getUint8(0), view.getUint8(1), view.getUint8(2), view.getUint8(3)) !== "MThd" || view.getUint16(12) !== 960) {
+        throw new Error("unexpected MIDI header");
+      }
+      const tracks = view.getUint16(10);
+      let offset = 14;
+      const notes = [];
+      for (let track = 0; track < tracks; track += 1) {
+        if (String.fromCharCode(view.getUint8(offset), view.getUint8(offset + 1), view.getUint8(offset + 2), view.getUint8(offset + 3)) !== "MTrk") {
+          throw new Error("missing track");
+        }
+        const length = view.getUint32(offset + 4);
+        offset += 8;
+        const end = offset + length;
+        let tick = 0;
+        let running = 0;
+        const open = new Map();
+        while (offset < end) {
+          let delta;
+          [delta, offset] = readVlq(view, offset);
+          tick += delta;
+          let byte = view.getUint8(offset);
+          if (byte >= 0x80) {
+            running = byte;
+            offset += 1;
+          }
+          if (running === 0xff) {
+            offset += 1;
+            let metaLen;
+            [metaLen, offset] = readVlq(view, offset);
+            offset += metaLen;
+            continue;
+          }
+          const kind = running & 0xf0;
+          const data1 = byte < 0x80 ? byte : view.getUint8(offset);
+          if (byte >= 0x80) offset += 1;
+          let data2 = 0;
+          if (kind !== 0xc0 && kind !== 0xd0) {
+            data2 = view.getUint8(offset);
+            offset += 1;
+          }
+          const key = (running & 0x0f) + ":" + data1;
+          if (kind === 0x90 && data2 > 0) open.set(key, { tick: tick, velocity: data2 });
+          else if (kind === 0x80 || (kind === 0x90 && data2 === 0)) {
+            const started = open.get(key);
+            if (started) {
+              notes.push({ pitch: data1, start: started.tick, duration: tick - started.tick, velocity: started.velocity });
+              open.delete(key);
+            }
+          }
+        }
+      }
+      notes.sort((a, b) => a.start - b.start || a.pitch - b.pitch);
+      return notes;
+    }
+    function partPath(role) {
+      const found = pack.parts.find((part) => part.study_id === studyId && part.role === role && part.variation === variation);
+      if (!found) throw new Error("missing " + role);
+      return found.path;
+    }
+    function renderCopy() {
+      const item = study();
+      document.getElementById("title").textContent = item.title;
+      document.getElementById("identity").textContent = item.identity;
+      document.getElementById("facts").textContent = item.id + " · " + item.bpm + " BPM · " + item.bars + " bars · " + (item.bars * 4 * 60 / item.bpm).toFixed(2) + " s · " + item.collection + " · tonic " + item.tonic;
+      document.getElementById("rhythm").textContent = item.rhythm;
+      document.getElementById("harmony").textContent = item.harmonic_rhythm + " " + item.accent;
+      document.getElementById("limits").textContent = item.limitations;
+      document.getElementById("departures").textContent = item.departures.length ? item.departures.join(" ") : "No pitch in this study is flagged as a departure.";
+      document.getElementById("keys").textContent = item.title + " " + variation.toUpperCase() + ". Space plays the bass. J and K change study.";
+      for (const button of index.querySelectorAll("button")) button.setAttribute("aria-pressed", button.dataset.id === studyId ? "true" : "false");
+      document.getElementById("var-a").setAttribute("aria-pressed", variation === "a" ? "true" : "false");
+      document.getElementById("var-b").setAttribute("aria-pressed", variation === "b" ? "true" : "false");
+      phrases.innerHTML = "";
+      item.phrases.forEach((phrase) => {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.textContent = phrase.name;
+        button.addEventListener("click", () => {
+          scroller.scrollTo({ left: Math.max(0, (phrase.start_bar / item.bars) * rollWidth - 12), behavior: "smooth" });
+        });
+        phrases.appendChild(button);
+      });
+    }
+    function drawAxis() {
+      axis.innerHTML = "";
+      [60, 48, 36].forEach((pitch) => {
+        const label = document.createElement("span");
+        label.textContent = pitchName(pitch);
+        label.style.top = yBass(pitch) + "px";
+        axis.appendChild(label);
+      });
+    }
+    function drawBass() {
+      const item = study();
+      const container = item.bars * 4 * 960;
+      rollWidth = Math.max(scroller.clientWidth || 640, item.bars * 150);
+      bars.style.width = rollWidth + "px";
+      staff.style.width = rollWidth + "px";
+      restRow.style.width = rollWidth + "px";
+      bars.innerHTML = "";
+      staff.innerHTML = "";
+      restRow.innerHTML = "";
+      let cursor = 0;
+      item.changes.forEach((name, changeIndex) => {
+        const span = item.change_bars[changeIndex];
+        const mark = document.createElement("div");
+        mark.className = "change";
+        mark.textContent = name;
+        mark.style.left = (cursor / item.bars) * rollWidth + "px";
+        mark.style.width = Math.max(0, (span / item.bars) * rollWidth - 4) + "px";
+        bars.appendChild(mark);
+        cursor += span;
+      });
+      const leaps = new Set();
+      bassNotes.forEach((note, noteIndex) => {
+        const next = bassNotes[noteIndex + 1];
+        if (next && Math.abs(next.pitch - note.pitch) >= 12) {
+          leaps.add(noteIndex);
+          leaps.add(noteIndex + 1);
+        }
+      });
+      bassNotes.forEach((note, noteIndex) => {
+        const block = document.createElement("div");
+        block.className = "pulse" + (leaps.has(noteIndex) ? " leap" : "");
+        block.title = pitchName(note.pitch) + " · velocity " + note.velocity;
+        block.style.left = (note.start / container) * rollWidth + "px";
+        block.style.width = Math.max(2, (note.duration / container) * rollWidth - 2) + "px";
+        block.style.top = (yBass(note.pitch) - 4) + "px";
+        staff.appendChild(block);
+        const next = bassNotes[noteIndex + 1];
+        if (!next || Math.abs(next.pitch - note.pitch) < 12) return;
+        const gapStart = note.start + note.duration;
+        const gap = next.start - gapStart;
+        const gapPx = (gap / container) * rollWidth;
+        if (gapPx < 4) return;
+        const line = document.createElement("div");
+        line.className = "leap-line";
+        const y1 = yBass(note.pitch);
+        const y2 = yBass(next.pitch);
+        line.style.left = ((gapStart + next.start) / 2 / container) * rollWidth - 1 + "px";
+        line.style.top = Math.min(y1, y2) + "px";
+        line.style.height = Math.max(2, Math.abs(y2 - y1)) + "px";
+        staff.appendChild(line);
+      });
+      const gaps = [];
+      if (bassNotes.length && bassNotes[0].start >= 480) gaps.push([0, bassNotes[0].start]);
+      for (let noteIndex = 0; noteIndex < bassNotes.length - 1; noteIndex += 1) {
+        const end = bassNotes[noteIndex].start + bassNotes[noteIndex].duration;
+        const nextStart = bassNotes[noteIndex + 1].start;
+        if (nextStart - end >= 480) gaps.push([end, nextStart]);
+      }
+      if (bassNotes.length) {
+        const end = bassNotes[bassNotes.length - 1].start + bassNotes[bassNotes.length - 1].duration;
+        if (container - end >= 480) gaps.push([end, container]);
+      }
+      gaps.forEach((gap) => {
+        const mark = document.createElement("div");
+        mark.className = "rest";
+        const width = Math.max(0, ((gap[1] - gap[0]) / container) * rollWidth - 3);
+        mark.style.left = (gap[0] / container) * rollWidth + "px";
+        mark.style.width = width + "px";
+        mark.textContent = width >= 36 ? "rest" : "";
+        mark.title = "rest";
+        restRow.appendChild(mark);
+      });
+      drawAxis();
+      const leapCount = leaps.size ? bassNotes.filter((note, noteIndex) => leaps.has(noteIndex) && bassNotes[noteIndex - 1] && Math.abs(note.pitch - bassNotes[noteIndex - 1].pitch) >= 12).length : 0;
+      status.dataset.bass = String(bassNotes.length);
+      status.dataset.leaps = String(leapCount);
+      status.dataset.rests = String(gaps.length);
+      status.dataset.pads = String(padNotes.length);
+      status.textContent = bassNotes.length + " bass notes from " + partPath("bass") + ". " + leapCount + " octave leaps. " + gaps.length + " rests. Harmonic reference is " + (showPad ? "in its own lane." : "hidden.");
+    }
+    function drawPads() {
+      const item = study();
+      const container = item.bars * 4 * 960;
+      padStaff.style.width = rollWidth + "px";
+      padStaff.innerHTML = "";
+      if (!showPad) return;
+      padNotes.forEach((note) => {
+        const block = document.createElement("div");
+        block.className = "pad";
+        block.title = pitchName(note.pitch);
+        block.style.left = (note.start / container) * rollWidth + "px";
+        block.style.width = Math.max(2, (note.duration / container) * rollWidth - 2) + "px";
+        block.style.top = (yPad(note.pitch) - 3) + "px";
+        padStaff.appendChild(block);
+      });
+    }
+    async function loadStudy() {
+      stopPlayback();
+      renderCopy();
+      status.textContent = "Reading the MIDI.";
+      try {
+        const bassRes = await fetch(partPath("bass"));
+        const padRes = await fetch(partPath("harmonic-reference"));
+        if (!bassRes.ok || !padRes.ok) throw new Error("MIDI request failed");
+        bassNotes = parseMidi(await bassRes.arrayBuffer());
+        padNotes = parseMidi(await padRes.arrayBuffer());
+        drawBass();
+        drawPads();
+      } catch (error) {
+        bassNotes = [];
+        padNotes = [];
+        status.textContent = "The MIDI did not load. " + error.message;
+      }
+    }
+    function freq(pitch) {
+      return 440 * Math.pow(2, (pitch - 69) / 12);
+    }
+    function schedule(ctx, note, origin, amount, type) {
+      const item = study();
+      const seconds = (tick) => tick / 960 * item.tempo_us / 1000000;
+      const when = origin + seconds(note.start);
+      const duration = Math.max(0.05, seconds(note.duration));
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = type;
+      osc.frequency.value = freq(note.pitch);
+      const level = amount * (note.velocity / 110);
+      const attack = Math.min(0.012, duration * 0.2);
+      gain.gain.setValueAtTime(0.0001, when);
+      gain.gain.exponentialRampToValueAtTime(Math.max(0.0002, level), when + attack);
+      gain.gain.exponentialRampToValueAtTime(0.0001, when + duration);
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.start(when);
+      osc.stop(when + duration + 0.02);
+    }
+    function stopPlayback() {
+      playing = false;
+      cancelAnimationFrame(followId);
+      if (audio) audio.close();
+      audio = null;
+      document.getElementById("play").textContent = "Play bass";
+    }
+    function playBass() {
+      if (!bassNotes.length) return;
+      stopPlayback();
+      const ctx = new AudioContext();
+      audio = ctx;
+      playing = true;
+      document.getElementById("play").textContent = "Stop";
+      const origin = ctx.currentTime + 0.05;
+      bassNotes.forEach((note) => schedule(ctx, note, origin, 0.08, "sawtooth"));
+      if (showPad) padNotes.forEach((note) => schedule(ctx, note, origin, 0.03, "triangle"));
+      const item = study();
+      const container = item.bars * 4 * 60 / item.bpm;
+      const follow = () => {
+        if (!playing || !audio) return;
+        if (audio.currentTime - origin < container) followId = requestAnimationFrame(follow);
+        else stopPlayback();
+      };
+      follow();
+    }
+    function stepStudy(direction) {
+      const current = pack.studies.findIndex((item) => item.id === studyId);
+      studyId = pack.studies[(current + direction + pack.studies.length) % pack.studies.length].id;
+      loadStudy();
+    }
+    pack.studies.forEach((item) => {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.dataset.id = item.id;
+      button.textContent = item.id.slice(1) + " " + item.title;
+      button.addEventListener("click", () => { studyId = item.id; loadStudy(); });
+      index.appendChild(button);
+    });
+    document.getElementById("var-a").addEventListener("click", () => { variation = "a"; loadStudy(); });
+    document.getElementById("var-b").addEventListener("click", () => { variation = "b"; loadStudy(); });
+    document.getElementById("play").addEventListener("click", () => { if (playing) stopPlayback(); else playBass(); });
+    document.getElementById("pad-toggle").addEventListener("click", () => {
+      showPad = !showPad;
+      padPanel.hidden = !showPad;
+      document.getElementById("pad-toggle").setAttribute("aria-pressed", showPad ? "true" : "false");
+      if (bassNotes.length) {
+        drawBass();
+        drawPads();
+      }
+    });
+    window.addEventListener("keydown", (event) => {
+      const target = event.target;
+      if (target && target.closest && target.closest("video, audio, input, textarea")) return;
+      if (event.code === "Space") {
+        event.preventDefault();
+        if (playing) stopPlayback();
+        else playBass();
+      } else if (event.key === "j" || event.key === "J") stepStudy(-1);
+      else if (event.key === "k" || event.key === "K") stepStudy(1);
+    });
+    loadStudy();
+  </script>
+</body>
+</html>

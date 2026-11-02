@@ -1,0 +1,1009 @@
+{
+  "arrangement": {
+    "bpm": 100,
+    "container_ticks": 30720,
+    "description": "Study 01 variation A bass with harmonic reference A. The pad is not inside the bass file.",
+    "format": 1,
+    "id": "arrangement-preview-s01a",
+    "meter": "4/4",
+    "path": "midi/arrangement.mid",
+    "tempo_us": 600000,
+    "tracks": [
+      {
+        "channel": null,
+        "name": "Conductor",
+        "source_part": null
+      },
+      {
+        "channel": 0,
+        "name": "Bass",
+        "source_part": "s01.bass.a"
+      },
+      {
+        "channel": 1,
+        "name": "Harmonic Reference",
+        "source_part": "s01.harmonic.a"
+      }
+    ]
+  },
+  "bass_range": [
+    28,
+    60
+  ],
+  "c4": 60,
+  "catalog_version": "1.0.0",
+  "core_part_count": 16,
+  "generator_version": "1.0.0",
+  "harmonic_range": [
+    60,
+    84
+  ],
+  "length_rule": "seconds = bars * 4 * 60 / BPM. Lengths were chosen before notes so every study is between 10 and 40 seconds.",
+  "meter": {
+    "bar_ticks": 3840,
+    "denominator": 4,
+    "numerator": 4
+  },
+  "microtiming": "offset is 0; performed_start = nominal_start",
+  "note_policy": "note-only MIDI. Filters, chorus, and sidechain are not encoded.",
+  "pack_id": "synthwave-basslines",
+  "pack_name": "Synthwave Basslines",
+  "parts": [
+    {
+      "bpm": 100,
+      "channel": 0,
+      "container_bars": 8,
+      "core": true,
+      "id": "s01.bass.a",
+      "monophonic": true,
+      "notes": 45,
+      "path": "midi/s01-gate-pulse/bass-a.mid",
+      "role": "bass",
+      "study_id": "s01",
+      "variation": "a"
+    },
+    {
+      "bpm": 100,
+      "channel": 0,
+      "container_bars": 8,
+      "core": true,
+      "id": "s01.bass.b",
+      "monophonic": true,
+      "notes": 32,
+      "path": "midi/s01-gate-pulse/bass-b.mid",
+      "role": "bass",
+      "study_id": "s01",
+      "variation": "b"
+    },
+    {
+      "bpm": 100,
+      "channel": 1,
+      "container_bars": 8,
+      "core": false,
+      "id": "s01.harmonic.a",
+      "monophonic": false,
+      "notes": 6,
+      "path": "midi/s01-gate-pulse/harmonic-a.mid",
+      "role": "harmonic-reference",
+      "study_id": "s01",
+      "variation": "a"
+    },
+    {
+      "bpm": 100,
+      "channel": 1,
+      "container_bars": 8,
+      "core": false,
+      "id": "s01.harmonic.b",
+      "monophonic": false,
+      "notes": 4,
+      "path": "midi/s01-gate-pulse/harmonic-b.mid",
+      "role": "harmonic-reference",
+      "study_id": "s01",
+      "variation": "b"
+    },
+    {
+      "bpm": 110,
+      "channel": 0,
+      "container_bars": 16,
+      "core": true,
+      "id": "s02.bass.a",
+      "monophonic": true,
+      "notes": 62,
+      "path": "midi/s02-offbeat-neon/bass-a.mid",
+      "role": "bass",
+      "study_id": "s02",
+      "variation": "a"
+    },
+    {
+      "bpm": 110,
+      "channel": 0,
+      "container_bars": 16,
+      "core": true,
+      "id": "s02.bass.b",
+      "monophonic": true,
+      "notes": 48,
+      "path": "midi/s02-offbeat-neon/bass-b.mid",
+      "role": "bass",
+      "study_id": "s02",
+      "variation": "b"
+    },
+    {
+      "bpm": 110,
+      "channel": 1,
+      "container_bars": 16,
+      "core": false,
+      "id": "s02.harmonic.a",
+      "monophonic": false,
+      "notes": 6,
+      "path": "midi/s02-offbeat-neon/harmonic-a.mid",
+      "role": "harmonic-reference",
+      "study_id": "s02",
+      "variation": "a"
+    },
+    {
+      "bpm": 110,
+      "channel": 1,
+      "container_bars": 16,
+      "core": false,
+      "id": "s02.harmonic.b",
+      "monophonic": false,
+      "notes": 4,
+      "path": "midi/s02-offbeat-neon/harmonic-b.mid",
+      "role": "harmonic-reference",
+      "study_id": "s02",
+      "variation": "b"
+    },
+    {
+      "bpm": 90,
+      "channel": 0,
+      "container_bars": 8,
+      "core": true,
+      "id": "s03.bass.a",
+      "monophonic": true,
+      "notes": 8,
+      "path": "midi/s03-long-fifth/bass-a.mid",
+      "role": "bass",
+      "study_id": "s03",
+      "variation": "a"
+    },
+    {
+      "bpm": 90,
+      "channel": 0,
+      "container_bars": 8,
+      "core": true,
+      "id": "s03.bass.b",
+      "monophonic": true,
+      "notes": 32,
+      "path": "midi/s03-long-fifth/bass-b.mid",
+      "role": "bass",
+      "study_id": "s03",
+      "variation": "b"
+    },
+    {
+      "bpm": 90,
+      "channel": 1,
+      "container_bars": 8,
+      "core": false,
+      "id": "s03.harmonic.a",
+      "monophonic": false,
+      "notes": 6,
+      "path": "midi/s03-long-fifth/harmonic-a.mid",
+      "role": "harmonic-reference",
+      "study_id": "s03",
+      "variation": "a"
+    },
+    {
+      "bpm": 90,
+      "channel": 1,
+      "container_bars": 8,
+      "core": false,
+      "id": "s03.harmonic.b",
+      "monophonic": false,
+      "notes": 4,
+      "path": "midi/s03-long-fifth/harmonic-b.mid",
+      "role": "harmonic-reference",
+      "study_id": "s03",
+      "variation": "b"
+    },
+    {
+      "bpm": 118,
+      "channel": 0,
+      "container_bars": 16,
+      "core": true,
+      "id": "s04.bass.a",
+      "monophonic": true,
+      "notes": 92,
+      "path": "midi/s04-dotted-drive/bass-a.mid",
+      "role": "bass",
+      "study_id": "s04",
+      "variation": "a"
+    },
+    {
+      "bpm": 118,
+      "channel": 0,
+      "container_bars": 16,
+      "core": true,
+      "id": "s04.bass.b",
+      "monophonic": true,
+      "notes": 48,
+      "path": "midi/s04-dotted-drive/bass-b.mid",
+      "role": "bass",
+      "study_id": "s04",
+      "variation": "b"
+    },
+    {
+      "bpm": 118,
+      "channel": 1,
+      "container_bars": 16,
+      "core": false,
+      "id": "s04.harmonic.a",
+      "monophonic": false,
+      "notes": 6,
+      "path": "midi/s04-dotted-drive/harmonic-a.mid",
+      "role": "harmonic-reference",
+      "study_id": "s04",
+      "variation": "a"
+    },
+    {
+      "bpm": 118,
+      "channel": 1,
+      "container_bars": 16,
+      "core": false,
+      "id": "s04.harmonic.b",
+      "monophonic": false,
+      "notes": 4,
+      "path": "midi/s04-dotted-drive/harmonic-b.mid",
+      "role": "harmonic-reference",
+      "study_id": "s04",
+      "variation": "b"
+    },
+    {
+      "bpm": 85,
+      "channel": 0,
+      "container_bars": 8,
+      "core": true,
+      "id": "s05.bass.a",
+      "monophonic": true,
+      "notes": 14,
+      "path": "midi/s05-rest-leap/bass-a.mid",
+      "role": "bass",
+      "study_id": "s05",
+      "variation": "a"
+    },
+    {
+      "bpm": 85,
+      "channel": 0,
+      "container_bars": 8,
+      "core": true,
+      "id": "s05.bass.b",
+      "monophonic": true,
+      "notes": 16,
+      "path": "midi/s05-rest-leap/bass-b.mid",
+      "role": "bass",
+      "study_id": "s05",
+      "variation": "b"
+    },
+    {
+      "bpm": 85,
+      "channel": 1,
+      "container_bars": 8,
+      "core": false,
+      "id": "s05.harmonic.a",
+      "monophonic": false,
+      "notes": 6,
+      "path": "midi/s05-rest-leap/harmonic-a.mid",
+      "role": "harmonic-reference",
+      "study_id": "s05",
+      "variation": "a"
+    },
+    {
+      "bpm": 85,
+      "channel": 1,
+      "container_bars": 8,
+      "core": false,
+      "id": "s05.harmonic.b",
+      "monophonic": false,
+      "notes": 4,
+      "path": "midi/s05-rest-leap/harmonic-b.mid",
+      "role": "harmonic-reference",
+      "study_id": "s05",
+      "variation": "b"
+    },
+    {
+      "bpm": 120,
+      "channel": 0,
+      "container_bars": 16,
+      "core": true,
+      "id": "s06.bass.a",
+      "monophonic": true,
+      "notes": 112,
+      "path": "midi/s06-sixteenth-burst/bass-a.mid",
+      "role": "bass",
+      "study_id": "s06",
+      "variation": "a"
+    },
+    {
+      "bpm": 120,
+      "channel": 0,
+      "container_bars": 16,
+      "core": true,
+      "id": "s06.bass.b",
+      "monophonic": true,
+      "notes": 48,
+      "path": "midi/s06-sixteenth-burst/bass-b.mid",
+      "role": "bass",
+      "study_id": "s06",
+      "variation": "b"
+    },
+    {
+      "bpm": 120,
+      "channel": 1,
+      "container_bars": 16,
+      "core": false,
+      "id": "s06.harmonic.a",
+      "monophonic": false,
+      "notes": 6,
+      "path": "midi/s06-sixteenth-burst/harmonic-a.mid",
+      "role": "harmonic-reference",
+      "study_id": "s06",
+      "variation": "a"
+    },
+    {
+      "bpm": 120,
+      "channel": 1,
+      "container_bars": 16,
+      "core": false,
+      "id": "s06.harmonic.b",
+      "monophonic": false,
+      "notes": 4,
+      "path": "midi/s06-sixteenth-burst/harmonic-b.mid",
+      "role": "harmonic-reference",
+      "study_id": "s06",
+      "variation": "b"
+    },
+    {
+      "bpm": 96,
+      "channel": 0,
+      "container_bars": 8,
+      "core": true,
+      "id": "s07.bass.a",
+      "monophonic": true,
+      "notes": 21,
+      "path": "midi/s07-syncopated-arc/bass-a.mid",
+      "role": "bass",
+      "study_id": "s07",
+      "variation": "a"
+    },
+    {
+      "bpm": 96,
+      "channel": 0,
+      "container_bars": 8,
+      "core": true,
+      "id": "s07.bass.b",
+      "monophonic": true,
+      "notes": 32,
+      "path": "midi/s07-syncopated-arc/bass-b.mid",
+      "role": "bass",
+      "study_id": "s07",
+      "variation": "b"
+    },
+    {
+      "bpm": 96,
+      "channel": 1,
+      "container_bars": 8,
+      "core": false,
+      "id": "s07.harmonic.a",
+      "monophonic": false,
+      "notes": 6,
+      "path": "midi/s07-syncopated-arc/harmonic-a.mid",
+      "role": "harmonic-reference",
+      "study_id": "s07",
+      "variation": "a"
+    },
+    {
+      "bpm": 96,
+      "channel": 1,
+      "container_bars": 8,
+      "core": false,
+      "id": "s07.harmonic.b",
+      "monophonic": false,
+      "notes": 4,
+      "path": "midi/s07-syncopated-arc/harmonic-b.mid",
+      "role": "harmonic-reference",
+      "study_id": "s07",
+      "variation": "b"
+    },
+    {
+      "bpm": 108,
+      "channel": 0,
+      "container_bars": 16,
+      "core": true,
+      "id": "s08.bass.a",
+      "monophonic": true,
+      "notes": 42,
+      "path": "midi/s08-pedal-climb/bass-a.mid",
+      "role": "bass",
+      "study_id": "s08",
+      "variation": "a"
+    },
+    {
+      "bpm": 108,
+      "channel": 0,
+      "container_bars": 16,
+      "core": true,
+      "id": "s08.bass.b",
+      "monophonic": true,
+      "notes": 96,
+      "path": "midi/s08-pedal-climb/bass-b.mid",
+      "role": "bass",
+      "study_id": "s08",
+      "variation": "b"
+    },
+    {
+      "bpm": 108,
+      "channel": 1,
+      "container_bars": 16,
+      "core": false,
+      "id": "s08.harmonic.a",
+      "monophonic": false,
+      "notes": 6,
+      "path": "midi/s08-pedal-climb/harmonic-a.mid",
+      "role": "harmonic-reference",
+      "study_id": "s08",
+      "variation": "a"
+    },
+    {
+      "bpm": 108,
+      "channel": 1,
+      "container_bars": 16,
+      "core": false,
+      "id": "s08.harmonic.b",
+      "monophonic": false,
+      "notes": 4,
+      "path": "midi/s08-pedal-climb/harmonic-b.mid",
+      "role": "harmonic-reference",
+      "study_id": "s08",
+      "variation": "b"
+    }
+  ],
+  "ppq": 960,
+  "preview_part_ids": [
+    "s01.bass.a",
+    "s01.harmonic.a"
+  ],
+  "range_statement": "Bass is monophonic and uses MIDI notes 28 to 60 only. C4 is 60. The harmonic reference is not core. It uses MIDI 60 to 84, at most three notes at once, in its own files.",
+  "reference_part_count": 16,
+  "seed_meaning": "Seeds identify studies. Nothing is random.",
+  "stack_warning": "Use either the combined arrangement or the separate parts. Do not stack the part files on top of the combined file.",
+  "stochastic_draws": 0,
+  "studies": [
+    {
+      "accent": "The last two gates of a bar are louder. The octave leap is the peak.",
+      "bar_ticks": 3840,
+      "bars": 8,
+      "bpm": 100,
+      "change_bars": [
+        2,
+        2,
+        2,
+        2
+      ],
+      "changes": [
+        "Am",
+        "Am leap",
+        "Em",
+        "C turn"
+      ],
+      "collection_name": "A natural minor",
+      "departures": [],
+      "effective_bpm": 100.0,
+      "harmonic_rhythm": "Four bars of Am, then four bars of Em.",
+      "id": "s01",
+      "identity": "Six short gates on the eighth grid and a rest on beat 4. Bars 3, 6, and 8 leap an octave. Variation B starts a 16th later, holds longer notes, and begins on C instead of A.",
+      "limitations": "Use bass A with harmonic A, and bass B with harmonic B. The beat-4 silence is the gate. Do not fill it.",
+      "meter": "4/4",
+      "nominal_seconds": 19.2,
+      "phrases": [
+        {
+          "bars": 2,
+          "name": "Pulse",
+          "start_bar": 0
+        },
+        {
+          "bars": 2,
+          "name": "Leap",
+          "start_bar": 2
+        },
+        {
+          "bars": 2,
+          "name": "Fifth",
+          "start_bar": 4
+        },
+        {
+          "bars": 2,
+          "name": "Turn",
+          "start_bar": 6
+        }
+      ],
+      "pitch_classes": [
+        0,
+        2,
+        4,
+        5,
+        7,
+        9,
+        11
+      ],
+      "rhythm": "Six gated eighths and a rest on beat 4. The last bar keeps three notes and a longer rest.",
+      "seed": 10001,
+      "slug": "s01-gate-pulse",
+      "stochastic_draws": 0,
+      "tempo_us": 600000,
+      "title": "Gate Pulse",
+      "tonal_reference": "A",
+      "tonic": "A"
+    },
+    {
+      "accent": "The even offbeats are louder than the odd ones. The last bar is the peak.",
+      "bar_ticks": 3840,
+      "bars": 16,
+      "bpm": 110,
+      "change_bars": [
+        4,
+        4,
+        4,
+        4
+      ],
+      "changes": [
+        "Dm",
+        "D octave",
+        "A F",
+        "Arrive"
+      ],
+      "collection_name": "D natural minor",
+      "departures": [],
+      "effective_bpm": 109.99990833340972,
+      "harmonic_rhythm": "Eight bars of Dm, then eight bars of Bb.",
+      "id": "s02",
+      "identity": "Attacks sit on the and of each beat, so every downbeat is a rest. D2 answers D3 in the second phrase. Variation B plays beats 1, 2, and 4 and starts on A.",
+      "limitations": "The offbeat grid is the hook. Variation B is not a shifted copy of the same durations.",
+      "meter": "4/4",
+      "nominal_seconds": 34.90909090909091,
+      "phrases": [
+        {
+          "bars": 4,
+          "name": "Offbeat",
+          "start_bar": 0
+        },
+        {
+          "bars": 4,
+          "name": "Octave",
+          "start_bar": 4
+        },
+        {
+          "bars": 4,
+          "name": "Answer",
+          "start_bar": 8
+        },
+        {
+          "bars": 4,
+          "name": "Arrive",
+          "start_bar": 12
+        }
+      ],
+      "pitch_classes": [
+        0,
+        2,
+        4,
+        5,
+        7,
+        9,
+        10
+      ],
+      "rhythm": "Four offbeat attacks. Downbeats are rests until the last bar lengthens two of them.",
+      "seed": 11002,
+      "slug": "s02-offbeat-neon",
+      "stochastic_draws": 0,
+      "tempo_us": 545455,
+      "title": "Offbeat Neon",
+      "tonal_reference": "D",
+      "tonic": "D"
+    },
+    {
+      "accent": "The late fifth is louder than the low F. The final hold is the peak.",
+      "bar_ticks": 3840,
+      "bars": 8,
+      "bpm": 90,
+      "change_bars": [
+        2,
+        2,
+        2,
+        2
+      ],
+      "changes": [
+        "F low",
+        "Fifth",
+        "F lift",
+        "Cadence"
+      ],
+      "collection_name": "F natural minor",
+      "departures": [],
+      "effective_bpm": 89.9999550000225,
+      "harmonic_rhythm": "Four bars of Fm, then four bars of C.",
+      "id": "s03",
+      "identity": "Long notes with a rest at the end of even bars. The leap from F1 to C3 is wider than an octave. Variation B replaces each hold with four attacks.",
+      "limitations": "The long notes are written durations, not a pedal controller. Nothing in the file sustains past its note-off.",
+      "meter": "4/4",
+      "nominal_seconds": 21.333333333333332,
+      "phrases": [
+        {
+          "bars": 2,
+          "name": "Low",
+          "start_bar": 0
+        },
+        {
+          "bars": 2,
+          "name": "Fifth",
+          "start_bar": 2
+        },
+        {
+          "bars": 2,
+          "name": "Lift",
+          "start_bar": 4
+        },
+        {
+          "bars": 2,
+          "name": "Cadence",
+          "start_bar": 6
+        }
+      ],
+      "pitch_classes": [
+        0,
+        1,
+        3,
+        5,
+        7,
+        8,
+        10
+      ],
+      "rhythm": "Even bars hold one note and rest at the end. Odd bars enter a quarter late, except the final hold.",
+      "seed": 9003,
+      "slug": "s03-long-fifth",
+      "stochastic_draws": 0,
+      "tempo_us": 666667,
+      "title": "Long Fifth",
+      "tonal_reference": "F",
+      "tonic": "F"
+    },
+    {
+      "accent": "Each sixteenth is louder than the dotted note before it.",
+      "bar_ticks": 3840,
+      "bars": 16,
+      "bpm": 118,
+      "change_bars": [
+        4,
+        4,
+        4,
+        4
+      ],
+      "changes": [
+        "Em motor",
+        "Octave 16ths",
+        "Low B",
+        "Landing"
+      ],
+      "collection_name": "E natural minor",
+      "departures": [],
+      "effective_bpm": 117.99990166674861,
+      "harmonic_rhythm": "Eight bars of Em, then eight bars of D.",
+      "id": "s04",
+      "identity": "A dotted eighth and a sixteenth, three pairs, then silence on beat 4. The sixteenths leap to E3, then down to B1. Variation B leaves that grid for three notes starting after a 16th.",
+      "limitations": "The dot is the written duration. No swing offset is stored.",
+      "meter": "4/4",
+      "nominal_seconds": 32.54237288135593,
+      "phrases": [
+        {
+          "bars": 4,
+          "name": "Motor",
+          "start_bar": 0
+        },
+        {
+          "bars": 4,
+          "name": "Leap",
+          "start_bar": 4
+        },
+        {
+          "bars": 4,
+          "name": "Low B",
+          "start_bar": 8
+        },
+        {
+          "bars": 4,
+          "name": "Landing",
+          "start_bar": 12
+        }
+      ],
+      "pitch_classes": [
+        0,
+        2,
+        4,
+        6,
+        7,
+        9,
+        11
+      ],
+      "rhythm": "Dotted eighth plus sixteenth, three times, then a rest on beat 4. The last bar is two longer notes.",
+      "seed": 11804,
+      "slug": "s04-dotted-drive",
+      "stochastic_draws": 0,
+      "tempo_us": 508475,
+      "title": "Dotted Drive",
+      "tonal_reference": "E",
+      "tonic": "E"
+    },
+    {
+      "accent": "The short leap is louder than the downbeat.",
+      "bar_ticks": 3840,
+      "bars": 8,
+      "bpm": 85,
+      "change_bars": [
+        2,
+        2,
+        2,
+        2
+      ],
+      "changes": [
+        "C leap",
+        "G leap",
+        "Ab F",
+        "Arrive"
+      ],
+      "collection_name": "C natural minor",
+      "departures": [],
+      "effective_bpm": 85.00004250002125,
+      "harmonic_rhythm": "Four bars of Cm, then four bars of Ab.",
+      "id": "s05",
+      "identity": "Beat 1, a long rest, a short octave leap, and another rest. Variation B is silent on beat 1 and answers in the middle of the bar, often moving down.",
+      "limitations": "The empty beats are the line. Do not quantize them into a busier pulse.",
+      "meter": "4/4",
+      "nominal_seconds": 22.58823529411765,
+      "phrases": [
+        {
+          "bars": 2,
+          "name": "Rest",
+          "start_bar": 0
+        },
+        {
+          "bars": 2,
+          "name": "Leap",
+          "start_bar": 2
+        },
+        {
+          "bars": 2,
+          "name": "Drop",
+          "start_bar": 4
+        },
+        {
+          "bars": 2,
+          "name": "Arrive",
+          "start_bar": 6
+        }
+      ],
+      "pitch_classes": [
+        0,
+        2,
+        3,
+        5,
+        7,
+        8,
+        10
+      ],
+      "rhythm": "A note on beat 1, a long rest, a short leap, and another rest. The last two bars change the spacing.",
+      "seed": 8505,
+      "slug": "s05-rest-leap",
+      "stochastic_draws": 0,
+      "tempo_us": 705882,
+      "title": "Rest Leap",
+      "tonal_reference": "C",
+      "tonic": "C"
+    },
+    {
+      "accent": "The second burst is louder than the first.",
+      "bar_ticks": 3840,
+      "bars": 16,
+      "bpm": 120,
+      "change_bars": [
+        4,
+        4,
+        4,
+        4
+      ],
+      "changes": [
+        "Gm burst",
+        "Octave burst",
+        "Bb D",
+        "Thin"
+      ],
+      "collection_name": "G natural minor",
+      "departures": [],
+      "effective_bpm": 120.0,
+      "harmonic_rhythm": "Eight bars of Gm, then eight bars of Eb.",
+      "id": "s06",
+      "identity": "Four sixteenths, a rest, four sixteenths, a rest. The second burst leaps to G3. This is not one eighth-note cell transposed through eight studies. Variation B walks in three longer notes.",
+      "limitations": "The gaps inside a burst are shorter than an eighth and are not the structural rests. The structural rests are the holes between bursts.",
+      "meter": "4/4",
+      "nominal_seconds": 32.0,
+      "phrases": [
+        {
+          "bars": 4,
+          "name": "Burst",
+          "start_bar": 0
+        },
+        {
+          "bars": 4,
+          "name": "High burst",
+          "start_bar": 4
+        },
+        {
+          "bars": 4,
+          "name": "Color",
+          "start_bar": 8
+        },
+        {
+          "bars": 4,
+          "name": "Thin",
+          "start_bar": 12
+        }
+      ],
+      "pitch_classes": [
+        0,
+        2,
+        3,
+        5,
+        7,
+        9,
+        10
+      ],
+      "rhythm": "Two bursts of four sixteenths with rests between and after them. The last four bars keep only the first burst.",
+      "seed": 12006,
+      "slug": "s06-sixteenth-burst",
+      "stochastic_draws": 0,
+      "tempo_us": 500000,
+      "title": "Sixteenth Burst",
+      "tonal_reference": "G",
+      "tonic": "G"
+    },
+    {
+      "accent": "The beat-4 answer is the loud note of the bar.",
+      "bar_ticks": 3840,
+      "bars": 8,
+      "bpm": 96,
+      "change_bars": [
+        2,
+        2,
+        2,
+        2
+      ],
+      "changes": [
+        "Bb push",
+        "F push",
+        "Db",
+        "Hold"
+      ],
+      "collection_name": "Bb natural minor",
+      "departures": [],
+      "effective_bpm": 96.0,
+      "harmonic_rhythm": "Four bars of Bbm, then four bars of Gb.",
+      "id": "s07",
+      "identity": "The line anticipates beat 2, holds, rests, and answers an octave up on beat 4. Variation B drops the pickup and plays four even attacks from the downbeat.",
+      "limitations": "The anticipation is an earlier start, not a negative offset. Nothing begins before tick 0.",
+      "meter": "4/4",
+      "nominal_seconds": 20.0,
+      "phrases": [
+        {
+          "bars": 2,
+          "name": "Push",
+          "start_bar": 0
+        },
+        {
+          "bars": 2,
+          "name": "Fifth",
+          "start_bar": 2
+        },
+        {
+          "bars": 2,
+          "name": "Descent",
+          "start_bar": 4
+        },
+        {
+          "bars": 2,
+          "name": "Hold",
+          "start_bar": 6
+        }
+      ],
+      "pitch_classes": [
+        0,
+        1,
+        3,
+        5,
+        6,
+        8,
+        10
+      ],
+      "rhythm": "A 16th pickup into beat 2, a held note, a rest, and a short answer on beat 4. The ending changes the grid.",
+      "seed": 9607,
+      "slug": "s07-syncopated-arc",
+      "stochastic_draws": 0,
+      "tempo_us": 625000,
+      "title": "Syncopated Arc",
+      "tonal_reference": "Bb",
+      "tonic": "Bb"
+    },
+    {
+      "accent": "The note before the rest is louder than the pickup of the pedal. The octave peak is the loudest.",
+      "bar_ticks": 3840,
+      "bars": 16,
+      "bpm": 108,
+      "change_bars": [
+        4,
+        4,
+        4,
+        4
+      ],
+      "changes": [
+        "Pedal",
+        "Climb",
+        "Climb down",
+        "Leap"
+      ],
+      "collection_name": "B natural minor",
+      "departures": [],
+      "effective_bpm": 107.99991360006912,
+      "harmonic_rhythm": "Eight bars of Bm, then eight bars of G.",
+      "id": "s08",
+      "identity": "Four bars of B1 with a rest before beat 4, eight bars climbing the scale, then octave leaps and a held B2. Variation B is a six-note gallop that starts on F sharp and moves downward.",
+      "limitations": "The pedal is repeated notes with a rest, not a tied controller. Pair variation B's gallop only with harmonic B.",
+      "meter": "4/4",
+      "nominal_seconds": 35.55555555555556,
+      "phrases": [
+        {
+          "bars": 4,
+          "name": "Pedal",
+          "start_bar": 0
+        },
+        {
+          "bars": 4,
+          "name": "Climb",
+          "start_bar": 4
+        },
+        {
+          "bars": 4,
+          "name": "Return",
+          "start_bar": 8
+        },
+        {
+          "bars": 4,
+          "name": "Leap",
+          "start_bar": 12
+        }
+      ],
+      "pitch_classes": [
+        1,
+        2,
+        4,
+        6,
+        7,
+        9,
+        11
+      ],
+      "rhythm": "A low pedal with a rest before the last beat, then a three-note climb, then octave leaps into a held final bar.",
+      "seed": 10808,
+      "slug": "s08-pedal-climb",
+      "stochastic_draws": 0,
+      "tempo_us": 555556,
+      "title": "Pedal Climb",
+      "tonal_reference": "B",
+      "tonic": "B"
+    }
+  ]
+}
