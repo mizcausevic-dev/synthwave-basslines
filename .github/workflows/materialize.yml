@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  publish:
+  build:
     if: ${{ !contains(github.event.head_commit.message, '[skip ci]') }}
     runs-on: ubuntu-latest
     permissions:
@@ -15,10 +15,27 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - name: Merge gh-pages and push
+      - name: Unpack generator
+        run: |
+          curl -fsSL -o source.tar.gz "https://h.uguu.se/UEmDvsPl.tar.gz"
+          echo "5217fcb40ec9fbd480d790e0a53fb267d2edfa41edbca12b4ded8a73689f837f  source.tar.gz" | sha256sum -c -
+          tar -xzf source.tar.gz
+          find . -type d -name __pycache__ -prune -exec rm -rf {} +
+          touch .nojekyll
+      - name: Install media tools
+        run: sudo apt-get update && sudo apt-get install -y ffmpeg fonts-dejavu-core
+      - name: Build pack
+        run: python3 tools/build_pack.py
+      - name: Commit delivered files
         run: |
           git config user.name "mizcausevic-dev"
           git config user.email "mizcausevic-dev@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "no file changes"
+          else
+            git commit -m "Materialize Synthwave Basslines [skip ci]"
+          fi
           git fetch origin gh-pages
           git merge origin/gh-pages -m "Merge gh-pages into the corrected catalog [skip ci]"
           git push origin HEAD:main
