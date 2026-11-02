@@ -1,0 +1,2 @@
+This branch is the GitHub Pages source for Synthwave Basslines.
+The catalog, MIDI, preview, and film are the files built by tools/build_pack.py.
