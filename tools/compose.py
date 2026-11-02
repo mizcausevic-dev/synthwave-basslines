@@ -175,6 +175,17 @@ def harmony(study, variation, plan):
     return part
 
 
+def plates(study, variation, events):
+    """Explicit pads. Each event is (start, duration, pitches, velocities)."""
+    part = harmonic(study, variation)
+    for start, duration, pitches, velocities in events:
+        if len(pitches) != len(velocities):
+            raise ValueError(f"{study['id']} pad {start}")
+        for pitch, velocity in zip(pitches, velocities):
+            part.add(start, duration, pitch, velocity, departure=False)
+    return part
+
+
 def _s01(study):
     a = bass(study, "a")
     b = bass(study, "b")
@@ -198,8 +209,18 @@ def _s01(study):
         [(240, 480, 43, 90), (1200, 240, 43, 100), (1680, 720, 31, 112), (2880, 600, 43, 92)],
         [(240, 480, 48, 100), (1200, 240, 36, 108), (1680, 720, 48, 118), (2880, 600, 45, 96)],
     ])
-    plan = [(0, 4, (69, 72, 76)), (4, 4, (64, 67, 71))]
-    return [a, b, harmony(study, "a", plan), harmony(study, "b", plan)]
+    # Am for four bars, Em for two, C for two. Matches the bass: A, then E, then C.
+    reference_a = plates(study, "a", [
+        (0, 15360, (69, 72, 76), (70, 78, 86)),
+        (15360, 7680, (64, 67, 71), (74, 82, 92)),
+        (23040, 7680, (60, 64, 67), (80, 88, 100)),
+    ])
+    reference_b = plates(study, "b", [
+        (240, 13440, (69, 76), (81, 93)),
+        (15840, 6720, (64, 71), (85, 97)),
+        (23280, 7200, (60, 67), (89, 101)),
+    ])
+    return [a, b, reference_a, reference_b]
 
 
 def _s02(study):
@@ -259,8 +280,20 @@ def _s03(study):
         [(0, 480, row[0], 86), (480, 480, row[1], 92), (960, 480, row[2], 100), (1920, 1440, row[3], 112)]
         for row in rows
     ])
-    plan = [(0, 4, (65, 68, 72)), (4, 4, (60, 63, 67))]
-    return [a, b, harmony(study, "a", plan), harmony(study, "b", plan)]
+    # Fm then C, staggered so this is not the Gate Pulse pad moved by a fourth.
+    reference_a = plates(study, "a", [
+        (0, 15360, (65,), (61,)),
+        (960, 14400, (68,), (69,)),
+        (1920, 13440, (72,), (77,)),
+        (15360, 15360, (60,), (83,)),
+        (16320, 14400, (63,), (91,)),
+        (17280, 13440, (67,), (99,)),
+    ])
+    reference_b = plates(study, "b", [
+        (480, 14000, (65, 72), (75, 87)),
+        (15360, 14880, (60, 63, 67), (80, 88, 96)),
+    ])
+    return [a, b, reference_a, reference_b]
 
 
 def _s04(study):
@@ -345,8 +378,24 @@ def _s06(study):
         [(0, 720, one, 88), (1440, 720, two, 102), (2880, 480, three, 96)]
         for one, two, three in grouped
     ])
-    plan = [(0, 8, (67, 70, 74)), (8, 8, (63, 67, 70))]
-    return [a, b, harmony(study, "a", plan), harmony(study, "b", plan)]
+    # Short Gm plates, then short Eb plates. Not one held slab.
+    reference_a = plates(study, "a", [
+        (0, 5760, (67, 70, 74), (63, 71, 79)),
+        (7680, 4800, (67, 70, 74), (67, 75, 83)),
+        (15360, 6720, (67, 74), (72, 84)),
+        (23040, 7680, (70, 74), (76, 86)),
+        (30720, 5760, (63, 67, 70), (80, 88, 96)),
+        (38400, 4800, (63, 70), (82, 94)),
+        (46080, 7680, (63, 67), (86, 98)),
+        (53760, 7200, (67, 70), (90, 102)),
+    ])
+    reference_b = plates(study, "b", [
+        (720, 14400, (67, 74), (77, 89)),
+        (15360, 12000, (70, 74), (81, 93)),
+        (31200, 14400, (63, 70), (85, 97)),
+        (46080, 14400, (63, 67), (88, 100)),
+    ])
+    return [a, b, reference_a, reference_b]
 
 
 def _s07(study):
@@ -432,8 +481,22 @@ def _s08(study):
         ]
         for group in grouped
     ])
-    plan = [(0, 8, (71, 74, 78)), (8, 8, (67, 71, 74))]
-    return [a, b, harmony(study, "a", plan), harmony(study, "b", plan)]
+    # Bm tones enter one at a time, then G. Not the Sixteenth Burst plates moved up a major third.
+    reference_a = plates(study, "a", [
+        (0, 30720, (71,), (58,)),
+        (1920, 28800, (74,), (66,)),
+        (3840, 26880, (78,), (74,)),
+        (30720, 30720, (67,), (82,)),
+        (32640, 28800, (71,), (90,)),
+        (34560, 26880, (74,), (98,)),
+    ])
+    reference_b = plates(study, "b", [
+        (0, 15360, (71,), (64,)),
+        (7680, 19200, (74, 78), (72, 80)),
+        (30720, 15360, (67,), (84,)),
+        (38400, 20000, (71, 74), (90, 98)),
+    ])
+    return [a, b, reference_a, reference_b]
 
 
 BUILDERS = {
@@ -459,7 +522,7 @@ def studies():
         {**common, "id": "s01", "slug": "s01-gate-pulse", "title": "Gate Pulse", "bpm": 100, "bars": 8,
          "tonic": "A", "tonal_reference": "A", "collection_name": "A natural minor",
          "pitch_classes": [0, 2, 4, 5, 7, 9, 11], "departures": [], "seed": 10001,
-         "harmonic_rhythm": "Four bars of Am, then four bars of Em.",
+         "harmonic_rhythm": "Four bars of Am, two bars of Em, then two bars of C. The bass follows that same order: A, then E, then C.",
          "rhythm": "Six gated eighths and a rest on beat 4. The last bar keeps three notes and a longer rest.",
          "changes": ["Am", "Am leap", "Em", "C turn"], "change_bars": [2, 2, 2, 2],
          "phrases": [
@@ -489,7 +552,7 @@ def studies():
         {**common, "id": "s03", "slug": "s03-long-fifth", "title": "Long Fifth", "bpm": 90, "bars": 8,
          "tonic": "F", "tonal_reference": "F", "collection_name": "F natural minor",
          "pitch_classes": [0, 1, 3, 5, 7, 8, 10], "departures": [], "seed": 9003,
-         "harmonic_rhythm": "Four bars of Fm, then four bars of C.",
+         "harmonic_rhythm": "Fm builds one tone at a time across four bars, then C does the same for four bars.",
          "rhythm": "Even bars hold one note and rest at the end. Odd bars enter a quarter late, except the final hold.",
          "changes": ["F low", "Fifth", "F lift", "Cadence"], "change_bars": [2, 2, 2, 2],
          "phrases": [
@@ -534,7 +597,7 @@ def studies():
         {**common, "id": "s06", "slug": "s06-sixteenth-burst", "title": "Sixteenth Burst", "bpm": 120, "bars": 16,
          "tonic": "G", "tonal_reference": "G", "collection_name": "G natural minor",
          "pitch_classes": [0, 2, 3, 5, 7, 9, 10], "departures": [], "seed": 12006,
-         "harmonic_rhythm": "Eight bars of Gm, then eight bars of Eb.",
+         "harmonic_rhythm": "Short Gm plates across the first eight bars, then short Eb plates across the last eight.",
          "rhythm": "Two bursts of four sixteenths with rests between and after them. The last four bars keep only the first burst.",
          "changes": ["Gm burst", "Octave burst", "Bb D", "Thin"], "change_bars": [4, 4, 4, 4],
          "phrases": [
@@ -564,7 +627,7 @@ def studies():
         {**common, "id": "s08", "slug": "s08-pedal-climb", "title": "Pedal Climb", "bpm": 108, "bars": 16,
          "tonic": "B", "tonal_reference": "B", "collection_name": "B natural minor",
          "pitch_classes": [1, 2, 4, 6, 7, 9, 11], "departures": [], "seed": 10808,
-         "harmonic_rhythm": "Eight bars of Bm, then eight bars of G.",
+         "harmonic_rhythm": "Bm tones enter one at a time for eight bars, then G tones enter one at a time for eight bars.",
          "rhythm": "A low pedal with a rest before the last beat, then a three-note climb, then octave leaps into a held final bar.",
          "changes": ["Pedal", "Climb", "Climb down", "Leap"], "change_bars": [4, 4, 4, 4],
          "phrases": [
@@ -671,6 +734,32 @@ def assert_identities(parts):
     }
 
 
+def _pattern(notes):
+    return tuple((note["performed_start"], note["duration"], note["velocity"]) for note in notes)
+
+
+def assert_reference_patterns(parts):
+    """Flagged pairs must not be one voicing moved by a constant interval."""
+    watched = ("s01", "s03", "s06", "s08")
+    for variation in ("a", "b"):
+        chosen = [
+            part for part in parts
+            if part["role"] == "harmonic-reference"
+            and part["variation"] == variation
+            and part["study_id"] in watched
+        ]
+        for index, left in enumerate(chosen):
+            for right in chosen[index + 1:]:
+                if _pattern(left["notes"]) != _pattern(right["notes"]):
+                    continue
+                deltas = {
+                    right["notes"][note_index]["pitch"] - left["notes"][note_index]["pitch"]
+                    for note_index in range(len(left["notes"]))
+                }
+                if len(deltas) == 1:
+                    raise ValueError(f"{right['id']} transposes {left['id']}")
+
+
 def compose():
     catalog_studies = studies()
     parts = []
@@ -679,6 +768,7 @@ def compose():
             parts.append(part.finish())
     assert_collections(catalog_studies, parts)
     identity = assert_identities(parts)
+    assert_reference_patterns(parts)
     core = [part for part in parts if part["core"]]
     refs = [part for part in parts if not part["core"]]
     if len(core) != 16 or len(refs) != 16:

@@ -80,8 +80,8 @@ def still_frames(root: Path) -> list[dict]:
 def render_media(config: dict) -> str:
     frames = config["frames"]
     data = json.dumps(frames, ensure_ascii=False).replace("<", "\\u003c")
-    preview_seconds = f"{config['preview_seconds']:.2f}"
-    film_seconds = f"{config['film_seconds']:.2f}"
+    preview_seconds = f"{config['preview_seconds']:.3f}"
+    film_seconds = f"{config['film_seconds']:.3f}"
     colors = config["colors"]
     return TEMPLATE.replace("__DATA__", data).replace("__PACK__", config["pack_name"]).replace(
         "__SUBJECT__", config["subject"]

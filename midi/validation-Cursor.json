@@ -1,15 +1,15 @@
 {
   "arrangement": {
     "agreement": "PASS",
-    "bytes": 610,
+    "bytes": 635,
     "format": 1,
     "path": "midi/arrangement.mid",
     "ppq": 960,
-    "sha256": "43240dd29f97997f6bea50a98a35a796d968fbc69e2751ec0832e28aaf958abe",
+    "sha256": "1fbd1e828926934a4fe6861f800c26c70d75aa32d02c9fea30dbe2460a92149f",
     "tracks": 3
   },
   "catalog_path": "catalog/catalog-Cursor.json",
-  "catalog_sha256": "749f36a997dcef417d115c7fbd690c8b5c53f6b84e1ba225fc1e4fbe9db50a72",
+  "catalog_sha256": "c86a2fb3ca9f1287d0f335dcbc000d19546e7d32585f2ba1eb9667de669ed02f",
   "errors": [],
   "files": [
     {
@@ -73,7 +73,37 @@
       "tracks": 1
     },
     {
-      "bytes": 113,
+      "bytes": 138,
+      "channels": [
+        1
+      ],
+      "checks": {
+        "eot": 30720,
+        "meter": "4/4",
+        "notes": 9,
+        "overlap": "PASS",
+        "parse": "PASS",
+        "ppq": 960,
+        "tempo": 600000
+      },
+      "core": false,
+      "departures": 0,
+      "effective_bpm": 100.0,
+      "format": 0,
+      "max_polyphony": 3,
+      "meter": "4/4",
+      "notes": 9,
+      "path": "midi/s01-gate-pulse/harmonic-a.mid",
+      "ppq": 960,
+      "requested_bpm": 100,
+      "role": "harmonic-reference",
+      "score_agreement": "PASS",
+      "sha256": "fc826157a04f5fce44a984283d38a850d4024662b5c37c011773e0192db267d3",
+      "tempo_us": 600000,
+      "tracks": 1
+    },
+    {
+      "bytes": 118,
       "channels": [
         1
       ],
@@ -90,45 +120,15 @@
       "departures": 0,
       "effective_bpm": 100.0,
       "format": 0,
-      "max_polyphony": 3,
-      "meter": "4/4",
-      "notes": 6,
-      "path": "midi/s01-gate-pulse/harmonic-a.mid",
-      "ppq": 960,
-      "requested_bpm": 100,
-      "role": "harmonic-reference",
-      "score_agreement": "PASS",
-      "sha256": "050594f73474d669041584540eb2e28dea99575d3938ecbf36813626dbab8da4",
-      "tempo_us": 600000,
-      "tracks": 1
-    },
-    {
-      "bytes": 100,
-      "channels": [
-        1
-      ],
-      "checks": {
-        "eot": 30720,
-        "meter": "4/4",
-        "notes": 4,
-        "overlap": "PASS",
-        "parse": "PASS",
-        "ppq": 960,
-        "tempo": 600000
-      },
-      "core": false,
-      "departures": 0,
-      "effective_bpm": 100.0,
-      "format": 0,
       "max_polyphony": 2,
       "meter": "4/4",
-      "notes": 4,
+      "notes": 6,
       "path": "midi/s01-gate-pulse/harmonic-b.mid",
       "ppq": 960,
       "requested_bpm": 100,
       "role": "harmonic-reference",
       "score_agreement": "PASS",
-      "sha256": "b9ed7ce7c02dcccdb256c87c882254a1bbd6776d868025cc87fb698abfc93136",
+      "sha256": "cfe696585df90b24e79ba48cc3c59555d1a5fba22d20fedf0f08a09be82db413",
       "tempo_us": 600000,
       "tracks": 1
     },
@@ -313,7 +313,7 @@
       "tracks": 1
     },
     {
-      "bytes": 113,
+      "bytes": 117,
       "channels": [
         1
       ],
@@ -338,19 +338,19 @@
       "requested_bpm": 90,
       "role": "harmonic-reference",
       "score_agreement": "PASS",
-      "sha256": "ba73fcf8bed0f01f20a036cf22d658b7ddd896f106469848753cfddf82b322bf",
+      "sha256": "65dc89f63a95a42ce06ad46b82dfe4ba49f75ebb4b905bdd405bf27479023ab9",
       "tempo_us": 666667,
       "tracks": 1
     },
     {
-      "bytes": 100,
+      "bytes": 108,
       "channels": [
         1
       ],
       "checks": {
         "eot": 30720,
         "meter": "4/4",
-        "notes": 4,
+        "notes": 5,
         "overlap": "PASS",
         "parse": "PASS",
         "ppq": 960,
@@ -360,15 +360,15 @@
       "departures": 0,
       "effective_bpm": 89.9999550000225,
       "format": 0,
-      "max_polyphony": 2,
+      "max_polyphony": 3,
       "meter": "4/4",
-      "notes": 4,
+      "notes": 5,
       "path": "midi/s03-long-fifth/harmonic-b.mid",
       "ppq": 960,
       "requested_bpm": 90,
       "role": "harmonic-reference",
       "score_agreement": "PASS",
-      "sha256": "78cd0c03da1611cc989b4ffd01f168b077a64e799b279c0dc8c8ffbbf1a09b32",
+      "sha256": "3623c66a44396ac6c4e8fce74f1993ab5d36f77c02b37f476c06c89b34289e1b",
       "tempo_us": 666667,
       "tracks": 1
     },
@@ -673,14 +673,14 @@
       "tracks": 1
     },
     {
-      "bytes": 115,
+      "bytes": 229,
       "channels": [
         1
       ],
       "checks": {
         "eot": 61440,
         "meter": "4/4",
-        "notes": 6,
+        "notes": 19,
         "overlap": "PASS",
         "parse": "PASS",
         "ppq": 960,
@@ -692,25 +692,25 @@
       "format": 0,
       "max_polyphony": 3,
       "meter": "4/4",
-      "notes": 6,
+      "notes": 19,
       "path": "midi/s06-sixteenth-burst/harmonic-a.mid",
       "ppq": 960,
       "requested_bpm": 120,
       "role": "harmonic-reference",
       "score_agreement": "PASS",
-      "sha256": "01fdf4ee864989f9356488a8c1c3671ec2dad5b20dcdbe9a2cb695b3669516f5",
+      "sha256": "5099a34847d1a70ba2b21835c46142b923912a216437e9d8b933bb5c5e04baf1",
       "tempo_us": 500000,
       "tracks": 1
     },
     {
-      "bytes": 102,
+      "bytes": 136,
       "channels": [
         1
       ],
       "checks": {
         "eot": 61440,
         "meter": "4/4",
-        "notes": 4,
+        "notes": 8,
         "overlap": "PASS",
         "parse": "PASS",
         "ppq": 960,
@@ -722,13 +722,13 @@
       "format": 0,
       "max_polyphony": 2,
       "meter": "4/4",
-      "notes": 4,
+      "notes": 8,
       "path": "midi/s06-sixteenth-burst/harmonic-b.mid",
       "ppq": 960,
       "requested_bpm": 120,
       "role": "harmonic-reference",
       "score_agreement": "PASS",
-      "sha256": "99c05a1197ed1972546a6739962d4e3fa19590cfd8cf6e81364431103c6a2abb",
+      "sha256": "a04bc6caac65c091e17562371fa3a67f9ebbe05c5468be41f69c046ecc976918",
       "tempo_us": 500000,
       "tracks": 1
     },
@@ -913,7 +913,7 @@
       "tracks": 1
     },
     {
-      "bytes": 115,
+      "bytes": 119,
       "channels": [
         1
       ],
@@ -938,19 +938,19 @@
       "requested_bpm": 108,
       "role": "harmonic-reference",
       "score_agreement": "PASS",
-      "sha256": "3ef7100c2ec484f54d843236ddcb760bf96753f3111eefc9f8e3be1306c4707f",
+      "sha256": "7f6cbd7edf2552e378a30cd1ec61d836166d01ced580dffd540c90ef8b57c7e2",
       "tempo_us": 555556,
       "tracks": 1
     },
     {
-      "bytes": 102,
+      "bytes": 119,
       "channels": [
         1
       ],
       "checks": {
         "eot": 61440,
         "meter": "4/4",
-        "notes": 4,
+        "notes": 6,
         "overlap": "PASS",
         "parse": "PASS",
         "ppq": 960,
@@ -960,15 +960,15 @@
       "departures": 0,
       "effective_bpm": 107.99991360006912,
       "format": 0,
-      "max_polyphony": 2,
+      "max_polyphony": 3,
       "meter": "4/4",
-      "notes": 4,
+      "notes": 6,
       "path": "midi/s08-pedal-climb/harmonic-b.mid",
       "ppq": 960,
       "requested_bpm": 108,
       "role": "harmonic-reference",
       "score_agreement": "PASS",
-      "sha256": "7fce3e005a326c7d459542719d0e480efe985c078231110ba7f74ee9f43134ab",
+      "sha256": "2a3b127a0f2ce7cf6753401d4e62900af2097550f0ee09731251f7e24cae0d0c",
       "tempo_us": 555556,
       "tracks": 1
     }
@@ -1202,6 +1202,6 @@
     "arrangement musical tracks match the individual files and carry no tempo"
   ],
   "score_path": "score/canonical-score-Cursor.json",
-  "score_sha256": "24526f35148d8c341671324476a0bc74bb9d90749df3240902a685bdb61cd794",
+  "score_sha256": "91667306ff729a4cc25641e8c5297a71e1672aa9adf0993aa12eb08929452021",
   "validator_version": "1.0.0"
 }

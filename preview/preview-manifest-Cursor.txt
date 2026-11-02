@@ -1,7 +1,7 @@
 preview, not a master
 {
   "arrangement_path": "midi/arrangement.mid",
-  "arrangement_sha256": "43240dd29f97997f6bea50a98a35a796d968fbc69e2751ec0832e28aaf958abe",
+  "arrangement_sha256": "1fbd1e828926934a4fe6861f800c26c70d75aa32d02c9fea30dbe2460a92149f",
   "encode": "libmp3lame CBR 192 kbps, mono source",
   "excerpt": {
     "bars": "1-8, the full container",
@@ -13,7 +13,7 @@ preview, not a master
   },
   "intermediate_wav": "build/preview.wav",
   "intermediate_wav_note": "The WAV is gitignored build storage. The delivered preview is the MP3.",
-  "intermediate_wav_sha256": "f56d1b247f532ac109759d8f6554a71de32ff70c4fbd9355688dd85afa7bf820",
+  "intermediate_wav_sha256": "1ad3823fe576f59def29662c2125e68accdbcb42edbfabed48bc907590d19679",
   "label": "preview, not a master",
   "listening": "No human listening audition was performed for this build.",
   "mapping": {
@@ -32,17 +32,17 @@ preview, not a master
     "/home/runner/work/synthwave-basslines/synthwave-basslines/preview/preview.mp3"
   ],
   "mp3_path": "preview/preview.mp3",
-  "mp3_sha256": "97309ae5c86be52c3a1440b2a25b38fda1d81101b011d6b38aac84aeca13dbfe",
+  "mp3_sha256": "b59b0362d64b03615aa80694c26b80a1d22155198e86f1f1df728bae94011495",
   "pack_id": "synthwave-basslines",
   "program_changes": "No program changes are encoded. A conventional GM player will normally use its default piano program for pitched channels unless configured otherwise; compatible GM channel 10 percussion is treated separately. Player behavior may vary.",
   "renderer": "simple-synth-1.0.0",
   "renderer_note": "These voices are preview mappings. They are not encoded in the MIDI file.",
   "rounding": "sample = floor(seconds * sample_rate + 0.5), computed from tick 0; intervals are not summed",
-  "sample_peak": 13619,
-  "sample_peak_dbfs": -7.626094301588468,
+  "sample_peak": 15423,
+  "sample_peak_dbfs": -6.545621527460432,
   "sample_peak_note": "This is a sample peak of the integer mix after scaling. It is not a true-peak measurement and it is not LUFS.",
   "score_seconds": 19.2,
-  "score_sha256": "24526f35148d8c341671324476a0bc74bb9d90749df3240902a685bdb61cd794",
+  "score_sha256": "91667306ff729a4cc25641e8c5297a71e1672aa9adf0993aa12eb08929452021",
   "seconds_encoded": 19.2,
   "source_parts": [
     {
@@ -53,7 +53,7 @@ preview, not a master
     {
       "id": "s01.harmonic.a",
       "path": "midi/s01-gate-pulse/harmonic-a.mid",
-      "sha256": "050594f73474d669041584540eb2e28dea99575d3938ecbf36813626dbab8da4"
+      "sha256": "fc826157a04f5fce44a984283d38a850d4024662b5c37c011773e0192db267d3"
     }
   ],
   "tempo_authority": "encoded MIDI tempo",

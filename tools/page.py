@@ -139,8 +139,8 @@ def render_page(catalog: dict, report: dict, preview: dict, film: dict) -> str:
         ],
     }
     data = json.dumps(payload, ensure_ascii=False).replace("<", "\\u003c")
-    seconds = f"{preview['seconds_encoded']:.2f}"
-    film_seconds = f"{film['duration_seconds']:.2f}"
+    seconds = f"{preview['seconds_encoded']:.3f}"
+    film_seconds = f"{film['duration_seconds']:.3f}"
     html = TEMPLATE
     replacements = {
         "__ROWS__": _rows(catalog),

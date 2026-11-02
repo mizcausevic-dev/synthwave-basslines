@@ -1139,7 +1139,7 @@
           "offset": 0,
           "performed_start": 0,
           "pitch": 69,
-          "velocity": 64
+          "velocity": 70
         },
         {
           "channel": 1,
@@ -1150,7 +1150,7 @@
           "offset": 0,
           "performed_start": 0,
           "pitch": 72,
-          "velocity": 68
+          "velocity": 78
         },
         {
           "channel": 1,
@@ -1161,40 +1161,73 @@
           "offset": 0,
           "performed_start": 0,
           "pitch": 76,
-          "velocity": 72
+          "velocity": 86
         },
         {
           "channel": 1,
           "departure": false,
-          "duration": 15360,
+          "duration": 7680,
           "id": "s01.harmonic.a.n0004",
           "nominal_start": 15360,
           "offset": 0,
           "performed_start": 15360,
           "pitch": 64,
-          "velocity": 64
+          "velocity": 74
         },
         {
           "channel": 1,
           "departure": false,
-          "duration": 15360,
+          "duration": 7680,
           "id": "s01.harmonic.a.n0005",
           "nominal_start": 15360,
           "offset": 0,
           "performed_start": 15360,
           "pitch": 67,
-          "velocity": 68
+          "velocity": 82
         },
         {
           "channel": 1,
           "departure": false,
-          "duration": 15360,
+          "duration": 7680,
           "id": "s01.harmonic.a.n0006",
           "nominal_start": 15360,
           "offset": 0,
           "performed_start": 15360,
           "pitch": 71,
-          "velocity": 72
+          "velocity": 92
+        },
+        {
+          "channel": 1,
+          "departure": false,
+          "duration": 7680,
+          "id": "s01.harmonic.a.n0007",
+          "nominal_start": 23040,
+          "offset": 0,
+          "performed_start": 23040,
+          "pitch": 60,
+          "velocity": 80
+        },
+        {
+          "channel": 1,
+          "departure": false,
+          "duration": 7680,
+          "id": "s01.harmonic.a.n0008",
+          "nominal_start": 23040,
+          "offset": 0,
+          "performed_start": 23040,
+          "pitch": 64,
+          "velocity": 88
+        },
+        {
+          "channel": 1,
+          "departure": false,
+          "duration": 7680,
+          "id": "s01.harmonic.a.n0009",
+          "nominal_start": 23040,
+          "offset": 0,
+          "performed_start": 23040,
+          "pitch": 67,
+          "velocity": 100
         }
       ],
       "path": "midi/s01-gate-pulse/harmonic-a.mid",
@@ -1220,44 +1253,66 @@
           "departure": false,
           "duration": 13440,
           "id": "s01.harmonic.b.n0001",
-          "nominal_start": 960,
+          "nominal_start": 240,
           "offset": 0,
-          "performed_start": 960,
+          "performed_start": 240,
           "pitch": 69,
-          "velocity": 72
+          "velocity": 81
         },
         {
           "channel": 1,
           "departure": false,
           "duration": 13440,
           "id": "s01.harmonic.b.n0002",
-          "nominal_start": 960,
+          "nominal_start": 240,
           "offset": 0,
-          "performed_start": 960,
-          "pitch": 72,
-          "velocity": 76
+          "performed_start": 240,
+          "pitch": 76,
+          "velocity": 93
         },
         {
           "channel": 1,
           "departure": false,
-          "duration": 13440,
+          "duration": 6720,
           "id": "s01.harmonic.b.n0003",
-          "nominal_start": 16320,
+          "nominal_start": 15840,
           "offset": 0,
-          "performed_start": 16320,
+          "performed_start": 15840,
           "pitch": 64,
-          "velocity": 72
+          "velocity": 85
         },
         {
           "channel": 1,
           "departure": false,
-          "duration": 13440,
+          "duration": 6720,
           "id": "s01.harmonic.b.n0004",
-          "nominal_start": 16320,
+          "nominal_start": 15840,
           "offset": 0,
-          "performed_start": 16320,
+          "performed_start": 15840,
+          "pitch": 71,
+          "velocity": 97
+        },
+        {
+          "channel": 1,
+          "departure": false,
+          "duration": 7200,
+          "id": "s01.harmonic.b.n0005",
+          "nominal_start": 23280,
+          "offset": 0,
+          "performed_start": 23280,
+          "pitch": 60,
+          "velocity": 89
+        },
+        {
+          "channel": 1,
+          "departure": false,
+          "duration": 7200,
+          "id": "s01.harmonic.b.n0006",
+          "nominal_start": 23280,
+          "offset": 0,
+          "performed_start": 23280,
           "pitch": 67,
-          "velocity": 76
+          "velocity": 101
         }
       ],
       "path": "midi/s01-gate-pulse/harmonic-b.mid",
@@ -3161,29 +3216,29 @@
           "offset": 0,
           "performed_start": 0,
           "pitch": 65,
-          "velocity": 64
+          "velocity": 61
         },
         {
           "channel": 1,
           "departure": false,
-          "duration": 15360,
+          "duration": 14400,
           "id": "s03.harmonic.a.n0002",
-          "nominal_start": 0,
+          "nominal_start": 960,
           "offset": 0,
-          "performed_start": 0,
+          "performed_start": 960,
           "pitch": 68,
-          "velocity": 68
+          "velocity": 69
         },
         {
           "channel": 1,
           "departure": false,
-          "duration": 15360,
+          "duration": 13440,
           "id": "s03.harmonic.a.n0003",
-          "nominal_start": 0,
+          "nominal_start": 1920,
           "offset": 0,
-          "performed_start": 0,
+          "performed_start": 1920,
           "pitch": 72,
-          "velocity": 72
+          "velocity": 77
         },
         {
           "channel": 1,
@@ -3194,29 +3249,29 @@
           "offset": 0,
           "performed_start": 15360,
           "pitch": 60,
-          "velocity": 64
+          "velocity": 83
         },
         {
           "channel": 1,
           "departure": false,
-          "duration": 15360,
+          "duration": 14400,
           "id": "s03.harmonic.a.n0005",
-          "nominal_start": 15360,
+          "nominal_start": 16320,
           "offset": 0,
-          "performed_start": 15360,
+          "performed_start": 16320,
           "pitch": 63,
-          "velocity": 68
+          "velocity": 91
         },
         {
           "channel": 1,
           "departure": false,
-          "duration": 15360,
+          "duration": 13440,
           "id": "s03.harmonic.a.n0006",
-          "nominal_start": 15360,
+          "nominal_start": 17280,
           "offset": 0,
-          "performed_start": 15360,
+          "performed_start": 17280,
           "pitch": 67,
-          "velocity": 72
+          "velocity": 99
         }
       ],
       "path": "midi/s03-long-fifth/harmonic-a.mid",
@@ -3240,46 +3295,57 @@
         {
           "channel": 1,
           "departure": false,
-          "duration": 13440,
+          "duration": 14000,
           "id": "s03.harmonic.b.n0001",
-          "nominal_start": 960,
+          "nominal_start": 480,
           "offset": 0,
-          "performed_start": 960,
+          "performed_start": 480,
           "pitch": 65,
-          "velocity": 72
+          "velocity": 75
         },
         {
           "channel": 1,
           "departure": false,
-          "duration": 13440,
+          "duration": 14000,
           "id": "s03.harmonic.b.n0002",
-          "nominal_start": 960,
+          "nominal_start": 480,
           "offset": 0,
-          "performed_start": 960,
-          "pitch": 68,
-          "velocity": 76
+          "performed_start": 480,
+          "pitch": 72,
+          "velocity": 87
         },
         {
           "channel": 1,
           "departure": false,
-          "duration": 13440,
+          "duration": 14880,
           "id": "s03.harmonic.b.n0003",
-          "nominal_start": 16320,
+          "nominal_start": 15360,
           "offset": 0,
-          "performed_start": 16320,
+          "performed_start": 15360,
           "pitch": 60,
-          "velocity": 72
+          "velocity": 80
         },
         {
           "channel": 1,
           "departure": false,
-          "duration": 13440,
+          "duration": 14880,
           "id": "s03.harmonic.b.n0004",
-          "nominal_start": 16320,
+          "nominal_start": 15360,
           "offset": 0,
-          "performed_start": 16320,
+          "performed_start": 15360,
           "pitch": 63,
-          "velocity": 76
+          "velocity": 88
+        },
+        {
+          "channel": 1,
+          "departure": false,
+          "duration": 14880,
+          "id": "s03.harmonic.b.n0005",
+          "nominal_start": 15360,
+          "offset": 0,
+          "performed_start": 15360,
+          "pitch": 67,
+          "velocity": 96
         }
       ],
       "path": "midi/s03-long-fifth/harmonic-b.mid",
@@ -7343,68 +7409,211 @@
         {
           "channel": 1,
           "departure": false,
-          "duration": 30720,
+          "duration": 5760,
           "id": "s06.harmonic.a.n0001",
           "nominal_start": 0,
           "offset": 0,
           "performed_start": 0,
           "pitch": 67,
-          "velocity": 64
+          "velocity": 63
         },
         {
           "channel": 1,
           "departure": false,
-          "duration": 30720,
+          "duration": 5760,
           "id": "s06.harmonic.a.n0002",
           "nominal_start": 0,
           "offset": 0,
           "performed_start": 0,
           "pitch": 70,
-          "velocity": 68
+          "velocity": 71
         },
         {
           "channel": 1,
           "departure": false,
-          "duration": 30720,
+          "duration": 5760,
           "id": "s06.harmonic.a.n0003",
           "nominal_start": 0,
           "offset": 0,
           "performed_start": 0,
           "pitch": 74,
+          "velocity": 79
+        },
+        {
+          "channel": 1,
+          "departure": false,
+          "duration": 4800,
+          "id": "s06.harmonic.a.n0004",
+          "nominal_start": 7680,
+          "offset": 0,
+          "performed_start": 7680,
+          "pitch": 67,
+          "velocity": 67
+        },
+        {
+          "channel": 1,
+          "departure": false,
+          "duration": 4800,
+          "id": "s06.harmonic.a.n0005",
+          "nominal_start": 7680,
+          "offset": 0,
+          "performed_start": 7680,
+          "pitch": 70,
+          "velocity": 75
+        },
+        {
+          "channel": 1,
+          "departure": false,
+          "duration": 4800,
+          "id": "s06.harmonic.a.n0006",
+          "nominal_start": 7680,
+          "offset": 0,
+          "performed_start": 7680,
+          "pitch": 74,
+          "velocity": 83
+        },
+        {
+          "channel": 1,
+          "departure": false,
+          "duration": 6720,
+          "id": "s06.harmonic.a.n0007",
+          "nominal_start": 15360,
+          "offset": 0,
+          "performed_start": 15360,
+          "pitch": 67,
           "velocity": 72
         },
         {
           "channel": 1,
           "departure": false,
-          "duration": 30720,
-          "id": "s06.harmonic.a.n0004",
+          "duration": 6720,
+          "id": "s06.harmonic.a.n0008",
+          "nominal_start": 15360,
+          "offset": 0,
+          "performed_start": 15360,
+          "pitch": 74,
+          "velocity": 84
+        },
+        {
+          "channel": 1,
+          "departure": false,
+          "duration": 7680,
+          "id": "s06.harmonic.a.n0009",
+          "nominal_start": 23040,
+          "offset": 0,
+          "performed_start": 23040,
+          "pitch": 70,
+          "velocity": 76
+        },
+        {
+          "channel": 1,
+          "departure": false,
+          "duration": 7680,
+          "id": "s06.harmonic.a.n0010",
+          "nominal_start": 23040,
+          "offset": 0,
+          "performed_start": 23040,
+          "pitch": 74,
+          "velocity": 86
+        },
+        {
+          "channel": 1,
+          "departure": false,
+          "duration": 5760,
+          "id": "s06.harmonic.a.n0011",
           "nominal_start": 30720,
           "offset": 0,
           "performed_start": 30720,
           "pitch": 63,
-          "velocity": 64
+          "velocity": 80
         },
         {
           "channel": 1,
           "departure": false,
-          "duration": 30720,
-          "id": "s06.harmonic.a.n0005",
+          "duration": 5760,
+          "id": "s06.harmonic.a.n0012",
           "nominal_start": 30720,
           "offset": 0,
           "performed_start": 30720,
           "pitch": 67,
-          "velocity": 68
+          "velocity": 88
         },
         {
           "channel": 1,
           "departure": false,
-          "duration": 30720,
-          "id": "s06.harmonic.a.n0006",
+          "duration": 5760,
+          "id": "s06.harmonic.a.n0013",
           "nominal_start": 30720,
           "offset": 0,
           "performed_start": 30720,
           "pitch": 70,
-          "velocity": 72
+          "velocity": 96
+        },
+        {
+          "channel": 1,
+          "departure": false,
+          "duration": 4800,
+          "id": "s06.harmonic.a.n0014",
+          "nominal_start": 38400,
+          "offset": 0,
+          "performed_start": 38400,
+          "pitch": 63,
+          "velocity": 82
+        },
+        {
+          "channel": 1,
+          "departure": false,
+          "duration": 4800,
+          "id": "s06.harmonic.a.n0015",
+          "nominal_start": 38400,
+          "offset": 0,
+          "performed_start": 38400,
+          "pitch": 70,
+          "velocity": 94
+        },
+        {
+          "channel": 1,
+          "departure": false,
+          "duration": 7680,
+          "id": "s06.harmonic.a.n0016",
+          "nominal_start": 46080,
+          "offset": 0,
+          "performed_start": 46080,
+          "pitch": 63,
+          "velocity": 86
+        },
+        {
+          "channel": 1,
+          "departure": false,
+          "duration": 7680,
+          "id": "s06.harmonic.a.n0017",
+          "nominal_start": 46080,
+          "offset": 0,
+          "performed_start": 46080,
+          "pitch": 67,
+          "velocity": 98
+        },
+        {
+          "channel": 1,
+          "departure": false,
+          "duration": 7200,
+          "id": "s06.harmonic.a.n0018",
+          "nominal_start": 53760,
+          "offset": 0,
+          "performed_start": 53760,
+          "pitch": 67,
+          "velocity": 90
+        },
+        {
+          "channel": 1,
+          "departure": false,
+          "duration": 7200,
+          "id": "s06.harmonic.a.n0019",
+          "nominal_start": 53760,
+          "offset": 0,
+          "performed_start": 53760,
+          "pitch": 70,
+          "velocity": 102
         }
       ],
       "path": "midi/s06-sixteenth-burst/harmonic-a.mid",
@@ -7428,46 +7637,90 @@
         {
           "channel": 1,
           "departure": false,
-          "duration": 28800,
+          "duration": 14400,
           "id": "s06.harmonic.b.n0001",
-          "nominal_start": 960,
+          "nominal_start": 720,
           "offset": 0,
-          "performed_start": 960,
+          "performed_start": 720,
           "pitch": 67,
-          "velocity": 72
+          "velocity": 77
         },
         {
           "channel": 1,
           "departure": false,
-          "duration": 28800,
+          "duration": 14400,
           "id": "s06.harmonic.b.n0002",
-          "nominal_start": 960,
+          "nominal_start": 720,
           "offset": 0,
-          "performed_start": 960,
-          "pitch": 70,
-          "velocity": 76
+          "performed_start": 720,
+          "pitch": 74,
+          "velocity": 89
         },
         {
           "channel": 1,
           "departure": false,
-          "duration": 28800,
+          "duration": 12000,
           "id": "s06.harmonic.b.n0003",
-          "nominal_start": 31680,
+          "nominal_start": 15360,
           "offset": 0,
-          "performed_start": 31680,
-          "pitch": 63,
-          "velocity": 72
+          "performed_start": 15360,
+          "pitch": 70,
+          "velocity": 81
         },
         {
           "channel": 1,
           "departure": false,
-          "duration": 28800,
+          "duration": 12000,
           "id": "s06.harmonic.b.n0004",
-          "nominal_start": 31680,
+          "nominal_start": 15360,
           "offset": 0,
-          "performed_start": 31680,
+          "performed_start": 15360,
+          "pitch": 74,
+          "velocity": 93
+        },
+        {
+          "channel": 1,
+          "departure": false,
+          "duration": 14400,
+          "id": "s06.harmonic.b.n0005",
+          "nominal_start": 31200,
+          "offset": 0,
+          "performed_start": 31200,
+          "pitch": 63,
+          "velocity": 85
+        },
+        {
+          "channel": 1,
+          "departure": false,
+          "duration": 14400,
+          "id": "s06.harmonic.b.n0006",
+          "nominal_start": 31200,
+          "offset": 0,
+          "performed_start": 31200,
+          "pitch": 70,
+          "velocity": 97
+        },
+        {
+          "channel": 1,
+          "departure": false,
+          "duration": 14400,
+          "id": "s06.harmonic.b.n0007",
+          "nominal_start": 46080,
+          "offset": 0,
+          "performed_start": 46080,
+          "pitch": 63,
+          "velocity": 88
+        },
+        {
+          "channel": 1,
+          "departure": false,
+          "duration": 14400,
+          "id": "s06.harmonic.b.n0008",
+          "nominal_start": 46080,
+          "offset": 0,
+          "performed_start": 46080,
           "pitch": 67,
-          "velocity": 76
+          "velocity": 100
         }
       ],
       "path": "midi/s06-sixteenth-burst/harmonic-b.mid",
@@ -9822,29 +10075,29 @@
           "offset": 0,
           "performed_start": 0,
           "pitch": 71,
-          "velocity": 64
+          "velocity": 58
         },
         {
           "channel": 1,
           "departure": false,
-          "duration": 30720,
+          "duration": 28800,
           "id": "s08.harmonic.a.n0002",
-          "nominal_start": 0,
+          "nominal_start": 1920,
           "offset": 0,
-          "performed_start": 0,
+          "performed_start": 1920,
           "pitch": 74,
-          "velocity": 68
+          "velocity": 66
         },
         {
           "channel": 1,
           "departure": false,
-          "duration": 30720,
+          "duration": 26880,
           "id": "s08.harmonic.a.n0003",
-          "nominal_start": 0,
+          "nominal_start": 3840,
           "offset": 0,
-          "performed_start": 0,
+          "performed_start": 3840,
           "pitch": 78,
-          "velocity": 72
+          "velocity": 74
         },
         {
           "channel": 1,
@@ -9855,29 +10108,29 @@
           "offset": 0,
           "performed_start": 30720,
           "pitch": 67,
-          "velocity": 64
+          "velocity": 82
         },
         {
           "channel": 1,
           "departure": false,
-          "duration": 30720,
+          "duration": 28800,
           "id": "s08.harmonic.a.n0005",
-          "nominal_start": 30720,
+          "nominal_start": 32640,
           "offset": 0,
-          "performed_start": 30720,
+          "performed_start": 32640,
           "pitch": 71,
-          "velocity": 68
+          "velocity": 90
         },
         {
           "channel": 1,
           "departure": false,
-          "duration": 30720,
+          "duration": 26880,
           "id": "s08.harmonic.a.n0006",
-          "nominal_start": 30720,
+          "nominal_start": 34560,
           "offset": 0,
-          "performed_start": 30720,
+          "performed_start": 34560,
           "pitch": 74,
-          "velocity": 72
+          "velocity": 98
         }
       ],
       "path": "midi/s08-pedal-climb/harmonic-a.mid",
@@ -9901,46 +10154,68 @@
         {
           "channel": 1,
           "departure": false,
-          "duration": 28800,
+          "duration": 15360,
           "id": "s08.harmonic.b.n0001",
-          "nominal_start": 960,
+          "nominal_start": 0,
           "offset": 0,
-          "performed_start": 960,
+          "performed_start": 0,
           "pitch": 71,
-          "velocity": 72
+          "velocity": 64
         },
         {
           "channel": 1,
           "departure": false,
-          "duration": 28800,
+          "duration": 19200,
           "id": "s08.harmonic.b.n0002",
-          "nominal_start": 960,
+          "nominal_start": 7680,
           "offset": 0,
-          "performed_start": 960,
+          "performed_start": 7680,
           "pitch": 74,
-          "velocity": 76
-        },
-        {
-          "channel": 1,
-          "departure": false,
-          "duration": 28800,
-          "id": "s08.harmonic.b.n0003",
-          "nominal_start": 31680,
-          "offset": 0,
-          "performed_start": 31680,
-          "pitch": 67,
           "velocity": 72
         },
         {
           "channel": 1,
           "departure": false,
-          "duration": 28800,
-          "id": "s08.harmonic.b.n0004",
-          "nominal_start": 31680,
+          "duration": 19200,
+          "id": "s08.harmonic.b.n0003",
+          "nominal_start": 7680,
           "offset": 0,
-          "performed_start": 31680,
+          "performed_start": 7680,
+          "pitch": 78,
+          "velocity": 80
+        },
+        {
+          "channel": 1,
+          "departure": false,
+          "duration": 15360,
+          "id": "s08.harmonic.b.n0004",
+          "nominal_start": 30720,
+          "offset": 0,
+          "performed_start": 30720,
+          "pitch": 67,
+          "velocity": 84
+        },
+        {
+          "channel": 1,
+          "departure": false,
+          "duration": 20000,
+          "id": "s08.harmonic.b.n0005",
+          "nominal_start": 38400,
+          "offset": 0,
+          "performed_start": 38400,
           "pitch": 71,
-          "velocity": 76
+          "velocity": 90
+        },
+        {
+          "channel": 1,
+          "departure": false,
+          "duration": 20000,
+          "id": "s08.harmonic.b.n0006",
+          "nominal_start": 38400,
+          "offset": 0,
+          "performed_start": 38400,
+          "pitch": 74,
+          "velocity": 98
         }
       ],
       "path": "midi/s08-pedal-climb/harmonic-b.mid",

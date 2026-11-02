@@ -3,7 +3,7 @@ This file is a draft. It has not been posted.
 
 Caption
 
-Synthwave Basslines. Eight studies of pulsing monophonic bass with octave leaps and rests. Two bass variations each, note-only MIDI between 85 and 120 BPM. Harmonic references are separate files. The audio preview is a simple-synth render of study 01, not a master. No listening audition was performed for this build.
+Synthwave Basslines. Gate Pulse is 8 bars at 100 BPM. The encoded preview measures 19.200 seconds. Eight studies of pulsing monophonic bass with octave leaps and rests. Two bass variations each, note-only MIDI between 85 and 120 BPM. Harmonic references are separate files. preview, not a master. No human listening audition was performed for this build.
 
 Hashtags
 

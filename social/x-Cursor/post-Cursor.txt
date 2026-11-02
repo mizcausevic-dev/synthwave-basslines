@@ -2,4 +2,4 @@ DRAFT
 This label is not the post body.
 
 POST BODY
-Synthwave Basslines: 8 pulsing bass studies with octave leaps and rests, two variations each, note-only MIDI, 85-120 BPM. Harmonic pads stay separate. Simple-synth preview of study 01, not a master. No listening audition was performed.
+Synthwave Basslines: Gate Pulse, 8 bars at 100 BPM. Encoded preview 19.200 seconds. preview, not a master. No human listening audition was performed for this build.

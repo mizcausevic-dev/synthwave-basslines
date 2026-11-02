@@ -6,7 +6,7 @@ DRAFT. The GitHub repository is https://github.com/mizcausevic-dev/synthwave-bas
 
 Tags: midi, synthwave, bass, music-production, composition
 
-The pack is eight synthwave bass studies in 4/4. Tempos are integers from 85 to 120 BPM. Container lengths were chosen before the notes: Gate Pulse is 8 bars at 100 BPM (19.2 seconds), Offbeat Neon is 16 bars at 110 (about 34.9 seconds), Long Fifth is 8 bars at 90 (21.3 seconds), Dotted Drive is 16 bars at 118 (about 32.5 seconds), Rest Leap is 8 bars at 85 (about 22.6 seconds), Sixteenth Burst is 16 bars at 120 (32 seconds), Syncopated Arc is 8 bars at 96 (20 seconds), and Pedal Climb is 16 bars at 108 (about 35.6 seconds). Sixteen bars at 85 BPM would be about 45 seconds, so that length was not used.
+The pack is eight synthwave bass studies in 4/4. Tempos are integers from 85 to 120 BPM. Container lengths were chosen before the notes. Gate Pulse is 8 bars at 100 BPM. The encoded MP3 of that study measures 19.200 seconds. Offbeat Neon is 16 bars at 110, Long Fifth is 8 bars at 90, Dotted Drive is 16 bars at 118, Rest Leap is 8 bars at 85, Sixteenth Burst is 16 bars at 120, Syncopated Arc is 8 bars at 96, and Pedal Climb is 16 bars at 108. Sixteen bars at 85 BPM would be about 45 seconds, so that length was not used.
 
 Bass is the core part. Each study has two bass variations, so the core count is sixteen files. Each study also has two harmonic-reference files. Those sixteen files are not part of the core count, and they are not merged into the bass files. Pair bass A with harmonic A, and bass B with harmonic B. The variations are alternatives.
 
@@ -18,9 +18,9 @@ No program changes are encoded. A conventional GM player will normally use its d
 
 Chorus, filters, and sidechain pumps are not in the files. The preview synth uses a filtered saw pulse for the bass and a quiet triangle pad for the harmonic reference. That mapping is documented. It is not a program change.
 
-The primary preview is study 01, Gate Pulse, variation A, for all 8 bars: the bass file and harmonic reference A together. The other studies are in the MIDI and are not in that audio file. preview, not a master. The film takes its audio from that preview file and shows the words preview, not master on the picture and in the WebVTT captions.
+The primary preview is study 01, Gate Pulse, variation A, for all 8 bars at 100 BPM: the bass file and harmonic reference A together. The encoded file measures 19.200 seconds. The other studies are in the MIDI and are not in that audio file. preview, not a master. The film takes its audio from that preview file and shows the words preview, not master on the picture and in the WebVTT captions.
 
-No human listening audition was performed for this build. The validator reopened the MIDI bytes and compared them with the canonical score. That is a structural check. The sample peak written beside the preview is the peak of the integer mix. It is not LUFS and it is not a true-peak reading. Nothing in this build is claimed as a master.
+No human listening audition was performed for this build. The validator reopened the MIDI bytes and compared them with the canonical score. That is a structural check. The sample peak written beside the preview is the peak of the integer mix.
 
 The stills are procedural illustrations of a neon night road with pulsing gates. Amber marks the tall octave peaks. They are not photographs of a session or of performers.
 
